@@ -59,6 +59,17 @@ Every real-world entity may have:
 
 The physical object remains real.
 The meta-object becomes the informational surface through which intelligent systems understand, reason about, and interact with reality.
+---
+
+## Meta‑Universe Architecture
+
+<p align="center">
+  <img src="./meta-universe-architecture.png" alt="Meta‑Universe Architecture v1" width="100%">
+</p>
+
+<p align="center">
+  <em>Meta‑Universe Architecture v1</em>
+</p>
 
 ---
 
