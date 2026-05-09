@@ -74,6 +74,18 @@ Meta‑Universe separates:
 
 ---
 
+## Meta‑Universe Architecture
+
+<p align="center">
+  <img src="./meta-universe-architecture-1.1.png" alt="Meta‑Universe Architecture v1.1" width="100%">
+</p>
+
+<p align="center">
+  <em>Meta‑Universe Architecture v1.1</em>
+</p>
+
+---
+
 # Layered Reality Model
 
 ## M1 — Reality Layer
