@@ -1,6 +1,5 @@
 # Meta-Universe Specification
 ## Version 1.1
-### Draft RFC
 
 # Status of This Document
 
