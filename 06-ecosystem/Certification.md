@@ -98,6 +98,8 @@ Assessment verifies:
 - governance;
 - validation results.
 
+Assessment is **reproducible**: it is expressed against the Abstract Test Procedures and V0–V5 levels of [Validation](../02-architecture/Validation.md), which in turn reference the normative requirement identifiers catalogued in the [Requirements Index](../REQUIREMENTS-INDEX.md). A certifier and a consumer running the same checks against the same artifact reach the same verdict. The primary evidence is a [Validation Report](../schemas/validation-report.schema.json) (see the [worked example](../examples/minimal-person/validation-report.json)).
+
 ---
 
 # 6. Certification Process

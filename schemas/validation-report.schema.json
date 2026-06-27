@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/validation-report.schema.json",
+  "title": "MUIF Validation Report",
+  "description": "The machine-readable result of validating a meta-model against the V0-V5 levels and their Abstract Test Procedures (see 02-architecture/Validation.md).",
+  "type": "object",
+  "required": ["reportId", "target", "validator", "validatedAt", "highestLevelAchieved", "levels", "summary"],
+  "additionalProperties": false,
+  "properties": {
+    "reportId": { "$ref": "common.schema.json#/$defs/identifier" },
+    "target": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/identifier" },
+        "version": { "$ref": "common.schema.json#/$defs/semver" },
+        "fingerprint": { "$ref": "common.schema.json#/$defs/fingerprint" }
+      }
+    },
+    "validator": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/identifier" },
+        "version": { "type": "string" }
+      }
+    },
+    "validatedAt": { "type": "string", "format": "date-time" },
+    "highestLevelAchieved": { "type": "string", "enum": ["none", "V0", "V1", "V2", "V3", "V4", "V5"] },
+    "levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "status", "checks"],
+        "additionalProperties": false,
+        "properties": {
+          "level": { "type": "string", "enum": ["V0", "V1", "V2", "V3", "V4", "V5"] },
+          "status": { "type": "string", "enum": ["pass", "fail", "skipped"] },
+          "checks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["checkId", "status", "severity"],
+              "additionalProperties": false,
+              "properties": {
+                "checkId": { "type": "string", "pattern": "^V[0-5]-[0-9]{2}$" },
+                "status": { "type": "string", "enum": ["pass", "fail", "skipped"] },
+                "severity": { "type": "string", "enum": ["error", "warning", "info"] },
+                "enforces": { "type": "array", "items": { "type": "string" }, "description": "Requirement IDs enforced by this check (see REQUIREMENTS-INDEX.md)." },
+                "location": { "type": "string", "description": "Where in the document the finding applies." },
+                "message": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["errors", "warnings", "info"],
+      "additionalProperties": false,
+      "properties": {
+        "errors": { "type": "integer", "minimum": 0 },
+        "warnings": { "type": "integer", "minimum": 0 },
+        "info": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

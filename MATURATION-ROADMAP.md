@@ -227,6 +227,16 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
     produce an identical fingerprint** `sha256:a628b2af…b04a639d`.
   - Cross-linked from `02-architecture/Versioning.md`.
   - *Next:* WS2 (MUFP protocol) and WS3 (Validation criteria + Requirement IDs).
+- **2026-06-27 — WS3 (Validation + Conformance testability) ✅ delivered.**
+  - `02-architecture/Validation.md` — added Abstract Test Procedures: per-level
+    checks `V0-01 … V5-02`, each with severity and the requirement IDs it enforces.
+  - `REQUIREMENTS-INDEX.md` + `tools/mu-requirements.ps1` — reproducible catalog
+    of **1000** RFC 2119 requirements across 36 normative docs, IDs `<MN>-Rnn`.
+  - `schemas/validation-report.schema.json` + `examples/minimal-person/validation-report.json`
+    — machine-readable report; minimal-person passes V0–V4 (fingerprint check verified).
+  - MUC gained a "Requirement Identifiers" section; `Certification.md` now defines
+    assessment as reproducible against the ATPs/levels and the Requirements Index.
+  - *Next:* WS2 (MUFP protocol), then WS4 (golden federation example).
 
 ---
 

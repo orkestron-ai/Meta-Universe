@@ -229,6 +229,14 @@ Conformance to MUC is a single level: a specification either preserves the const
 
 ---
 
+# Requirement Identifiers
+
+Every normative statement in this Constitution carries a stable identifier of the form `MUC-Rnn`, catalogued in the [Requirements Index](../REQUIREMENTS-INDEX.md) (for example, `MUC-R03` for Universal Identity, `MUC-R11` for the Object/Projection separation). Subordinate standards, Conformance Statements and [Validation](../02-architecture/Validation.md) reports SHOULD cite these identifiers when referring to a constitutional requirement.
+
+Identifiers are generated from the text by `tools/mu-requirements.ps1` and are assigned in reading order. During the Working Draft phase they MAY shift as the text evolves; they will be frozen at the first stable release.
+
+---
+
 # Final Principle
 
 Meta-Universe is a federation of sovereign semantic universes.

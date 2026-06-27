@@ -7,8 +7,8 @@
 **Document Class:** Normative  
 **Version:** 2.0 (Draft)  
 **Status:** Working Draft  
-**Normative References:** MUC, [MMAS-Core](../02-architecture/MMAS-Core.md), [MMAS-Conformance](../02-architecture/MMAS-Conformance.md)  
-**Informative References:** [Certification](../06-ecosystem/Certification.md), [Compatibility-Matrix](../06-ecosystem/Compatibility-Matrix.md)  
+**Normative References:** MUC, [MMAS-Core](../02-architecture/MMAS-Core.md), [MMAS-Conformance](../02-architecture/MMAS-Conformance.md), [MMAS-Interchange](../02-architecture/MMAS-Interchange.md)  
+**Informative References:** [Certification](../06-ecosystem/Certification.md), [Compatibility-Matrix](../06-ecosystem/Compatibility-Matrix.md), [Requirements Index](../REQUIREMENTS-INDEX.md)  
 **Copyright:** © Orkestron.AI  
 **License:** Apache-2.0
 
@@ -74,6 +74,66 @@ V0–V3 are **mandatory** for any MMAS-conformant model. V4 is required for any 
 
 ---
 
+# 5a. Abstract Test Procedures
+
+Each validation level is defined by a set of **Abstract Test Procedures (ATPs)** — checks that a conforming validator SHALL perform. Each check has a stable identifier (`V<level>-<nn>`), a severity on failure, and the normative requirement(s) it enforces (by ID, from the [Requirements Index](../REQUIREMENTS-INDEX.md)). ATPs make conformance reproducible: two validators applying these checks to the same model SHALL reach the same verdict.
+
+## V0 — Syntax
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V0-01` | The document parses as well-formed JSON (or YAML losslessly convertible to it) in UTF-8. | Error | `MUIF-R02`, `MUIF-R03` |
+| `V0-02` | `muif.version` is present and equals `"1.0"`. | Error | `MUIF-R01` |
+
+## V1 — Structural
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V1-01` | The document validates against `manifest.schema.json` and the referenced primitive schemas. | Error | `MUIF-R01` |
+| `V1-02` | Every primitive declares its `muifType` and all required fields. | Error | `MUIF-R01` |
+| `V1-03` | The Composition Hierarchy is present (a `metaModel` plus at least one bundle or object). | Warning | `MMAS-CORE` composition |
+
+## V2 — Semantic
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V2-01` | All `id` values are unique within the document. | Error | `MUC-R03` |
+| `V2-02` | Every internal reference (`relationship.source`/`target`, `event.subject`, `projection.subject`/`contract`) resolves to a declared `id` or an explicitly declared federated identity. | Error | `MUC-R15` |
+| `V2-03` | Every CSN matches the canonical pattern and each namespace used is declared. | Error | `NAME` (CSN) |
+| `V2-04` | Every `relationship.kind` is a declared or known Relationship Profile class. | Warning | `REL` (profile) |
+| `V2-05` | A self-declared `metaModel.fingerprint`, if present, equals the fingerprint computed per [MMAS-Interchange](../02-architecture/MMAS-Interchange.md). | Error | `MUIF-R12`, `MUIF-R18` |
+
+## V3 — Constitutional
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V3-01` | Every Object has a unique, persistent identity. | Error | `MUC-R03`, `MUC-R04` |
+| `V3-02` | Every significant fact declares an owner and provenance. | Error | `MUC-R12`, `MUC-R13`, `MUC-R14` |
+| `V3-03` | No Projection redefines the identity of its subject. | Error | `MUC-R11` |
+| `V3-04` | Every externally exposed Projection is governed by a Contract and declares a purpose. | Error | `MUC-R21`, `MUC-R22`, `MUC-R25` |
+| `V3-05` | Every semantic fact exists within an explicit context. | Warning | `MUC-R08`, `MUC-R10` |
+| `V3-06` | Origin, ownership, evolution and dependencies are determinable. | Warning | `MUC-R15`, `MUC-R16` |
+
+## V4 — Federation
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V4-01` | The public schema is discoverable without exposing underlying data. | Error | `MUC-R17`, `MUC-R18`, `MUC-R19`, `MUC-R20` |
+| `V4-02` | A Semantic Contract is declared for every externally exchanged Projection. | Error | `MUC-R21` |
+| `V4-03` | A version and a Semantic Fingerprint are published for negotiation. | Error | `MUIF-R12` |
+| `V4-04` | Semantic Mappings are present for every imported external standard. | Warning | `EXT` (Semantic Package) |
+
+## V5 — Runtime *(optional)*
+
+| Check | Verifies | On fail | Enforces |
+|-------|----------|---------|----------|
+| `V5-01` | Live instances conform to the declared model. | Info | — |
+| `V5-02` | No semantic drift between the declared model and observed reality. | Info | — |
+
+A validator MAY add checks, but SHALL implement at least the Error-severity checks of every level it claims to verify.
+
+---
+
 # 6. Severity Classification
 
 A validation result SHALL classify each finding by severity:
@@ -94,6 +154,8 @@ A validation run SHALL produce a **Validation Report** that includes:
 - the highest validation level achieved;
 - every finding, with severity, location and explanation;
 - the validator identity and the validation timestamp.
+
+For each level attempted, the report SHALL record the status of every ATP check (Section 5a) by check ID. The machine-readable structure is defined by [`schemas/validation-report.schema.json`](../schemas/validation-report.schema.json); a worked example is [`examples/minimal-person/validation-report.json`](../examples/minimal-person/validation-report.json), which reports the minimal-person model passing V0–V4 and records its verified Semantic Fingerprint.
 
 The report is itself a traceable artifact and MAY be referenced by a [Conformance Statement](../02-architecture/MMAS-Conformance.md) or a [Certificate](../06-ecosystem/Certification.md).
 
