@@ -128,6 +128,29 @@ Layer 6 — Implementations
 
 ---
 
+# 3a. Abstraction Layers (M0–M4) and the v1.x Lineage
+
+The six layers above organize the *specification*. Orthogonal to them is the
+classic **metamodeling abstraction stack** that Meta-Universe v1.x expressed as
+M1–M4. v2 preserves this stack; it simply distributes it across the documents of
+the layers above. The mapping is:
+
+| Abstraction | Meaning | Where it lives in v2 |
+|-------------|---------|----------------------|
+| **M0 — Reality** | The actual entities in the world | Described, never replaced (Reality First) |
+| **M1 — Instances** | Concrete data about those entities | Implementations (Layer 6); never the source of truth |
+| **M2 — Meta-Object** | Canonical semantic identities and the core primitives | [Object](../04-core-concepts/Object.md), [Identity](../04-core-concepts/Identity.md), [Relationship](../04-core-concepts/Relationship.md), [Event](../04-core-concepts/Event.md) |
+| **M3 — Meta-Model** | The structures that describe a domain | [MMAS](../02-architecture/MMAS-Core.md) and Domain Meta-Models |
+| **M4 — Federation** | The protocol by which sovereign models interoperate | [MUFP](../03-federation/MUFP.md) |
+
+> **Continuity note.** v1.x readers will recognize M1–M4. v2 keeps the same
+> conceptual stack but renames the v1 *Galaxy* level to *Namespace* and reorganizes
+> the material around the constitutional/architectural/federation split. The
+> [Migration guide](../07-guides/Migration-from-v1.md) gives the full concept
+> mapping.
+
+---
+
 # 4. Conceptual Flow
 
 The architectural dependency SHALL flow downward.

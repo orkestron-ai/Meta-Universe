@@ -4,7 +4,7 @@ specification: Meta-Universe
 version: "2.0"
 status: "Working Draft"
 license: Apache-2.0
-documentCount: 76
+documentCount: 77
 documents:
   - id: MU-V2-ARCH-001
     title: "Meta-Model Architecture Standard - Core Architecture"
@@ -66,6 +66,11 @@ documents:
     class: Normative
     status: "Working Draft"
     path: 02-architecture/Internationalization.md
+  - id: MU-V2-ARCH-013
+    title: "Meta-Universe Core Profile (MVP Conformance)"
+    class: Normative
+    status: "Working Draft"
+    path: 02-architecture/Core-Profile.md
   - id: MU-V2-ASSET-000
     title: "Canonical Diagram Assets"
     class: Informative

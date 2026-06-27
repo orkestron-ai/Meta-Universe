@@ -33,6 +33,8 @@
 
 ---
 
+> 📋 **Status:** Working Draft — see [STATUS.md](STATUS.md). Not yet to be cited as a finalized standard. Machine-readable index: [`spec-index.yaml`](spec-index.yaml).
+
 ## Why Meta-Universe?
 
 Every organization builds its own models.
@@ -230,7 +232,9 @@ New to the project? The **[FAQ](00-foundation/FAQ.md)** answers the most common 
 
 ## Contributing
 
-Meta-Universe is an open specification. Contributions, reviews and proposals are welcome through the [Change Process](01-constitution/Change-Process.md) and the roles described in [Governance](01-constitution/Governance.md). Please read the [Principles](00-foundation/Principles.md) and the [Constitution](01-constitution/Meta-Universe-Constitution.md) first — every contribution must remain consistent with both.
+Meta-Universe is an open specification. Contributions, reviews and proposals are welcome — start with **[CONTRIBUTING.md](CONTRIBUTING.md)**, the project **[GOVERNANCE.md](GOVERNANCE.md)**, the **[Code of Conduct](CODE_OF_CONDUCT.md)** and the **[Security Policy](SECURITY.md)**. Changes flow through the [Change Process](01-constitution/Change-Process.md); please read the [Principles](00-foundation/Principles.md) and the [Constitution](01-constitution/Meta-Universe-Constitution.md) first — every contribution must remain consistent with both.
+
+Implementers: the **[Core Profile](02-architecture/Core-Profile.md)** defines the minimal mandatory subset to be "Meta-Universe Core conformant".
 
 ---
 
