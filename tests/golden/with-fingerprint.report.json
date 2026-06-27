@@ -1,0 +1,118 @@
+{
+    "reportId":  "urn:mu:validation:adhoc",
+    "target":  {
+                   "id":  "urn:mu:mm:test",
+                   "version":  "1.0.0",
+                   "fingerprint":  "sha256:c827b9f73a6e7d04177f19e3c465da98260eb10d76f985349f165611b3bbdd83"
+               },
+    "validator":  {
+                      "id":  "urn:mu:validator:mu-validate",
+                      "version":  "ws13"
+                  },
+    "validatedAt":  "1970-01-01T00:00:00Z",
+    "highestLevelAchieved":  "V2",
+    "levels":  [
+                   {
+                       "level":  "V0",
+                       "status":  "pass",
+                       "checks":  [
+                                      {
+                                          "checkId":  "V0-01",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUIF-R02",
+                                                           "MUIF-R03"
+                                                       ],
+                                          "message":  null
+                                      },
+                                      {
+                                          "checkId":  "V0-02",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUIF-R01"
+                                                       ],
+                                          "message":  null
+                                      }
+                                  ]
+                   },
+                   {
+                       "level":  "V1",
+                       "status":  "pass",
+                       "checks":  [
+                                      {
+                                          "checkId":  "V1-01",
+                                          "status":  "skipped",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUIF-R01"
+                                                       ],
+                                          "message":  "Full JSON Schema validation runs in CI (ajv)."
+                                      },
+                                      {
+                                          "checkId":  "V1-02",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUIF-R01"
+                                                       ],
+                                          "message":  null
+                                      }
+                                  ]
+                   },
+                   {
+                       "level":  "V2",
+                       "status":  "pass",
+                       "checks":  [
+                                      {
+                                          "checkId":  "V2-01",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUC-R03"
+                                                       ],
+                                          "message":  null
+                                      },
+                                      {
+                                          "checkId":  "V2-03",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "NAME"
+                                                       ],
+                                          "message":  null
+                                      },
+                                      {
+                                          "checkId":  "V2-05",
+                                          "status":  "pass",
+                                          "severity":  "error",
+                                          "enforces":  [
+                                                           "MUIF-R12",
+                                                           "MUIF-R18"
+                                                       ],
+                                          "message":  "fingerprint matches"
+                                      }
+                                  ]
+                   },
+                   {
+                       "level":  "V3",
+                       "status":  "skipped",
+                       "checks":  [
+
+                                  ]
+                   },
+                   {
+                       "level":  "V4",
+                       "status":  "skipped",
+                       "checks":  [
+
+                                  ]
+                   }
+               ],
+    "summary":  {
+                    "errors":  0,
+                    "warnings":  0,
+                    "info":  0
+                }
+}

@@ -116,6 +116,35 @@ To prevent name collisions across a federation, a CSN SHOULD be paired with the 
 
 ---
 
+# 6a. CSN Grammar and Identifier Scheme
+
+To make CSNs and identifiers machine-checkable, this section gives their formal grammar.
+
+A **Canonical Semantic Name** SHALL conform to the following ABNF (RFC 5234):
+
+```abnf
+CSN       = segment *("." segment)
+segment   = lower *(ALPHA / DIGIT)
+lower     = %x61-7A            ; a-z  (a segment SHALL start lowercase)
+ALPHA     = %x41-5A / %x61-7A
+DIGIT     = %x30-39
+```
+
+The first `segment` is the **namespace**; the remaining segments name the concept within it (for example `employee.compensation.salaryAgreement` — namespace `employee`). This grammar is the normative source for the `csn` pattern in [`schemas/common.schema.json`](../schemas/common.schema.json) and is enforced by check `V2-03` in [Validation](Validation.md).
+
+An **Identifier** (the `id` of an Object, Relationship, Event, Contract or Projection, and the value of a Local Identity) is opaque and SHALL be stable for the lifetime of the thing it names. An implementation SHALL adopt one of the following identifier schemes, declared so that consumers can resolve it:
+
+| Scheme | Form | Example |
+|--------|------|---------|
+| `uuid` | a UUID | `9d3f2c1a-...` |
+| `uri` | an absolute URI | `https://acme.example/person/12345` |
+| `urn` | a URN | `urn:mu:person:9d3f2c1a` |
+| `qname` | `scheme:value` within a Universe | `employee:12345` |
+
+Identifiers SHALL be compared as exact byte strings; they SHALL NOT be case-folded or normalized. A [Canonical Identity](../04-core-concepts/Identity.md) pairs a scheme with a value (`{ "scheme": "urn", "value": "urn:mu:person:9d3f2c1a" }`). New schemes MAY be registered without breaking existing identifiers.
+
+---
+
 # 7. Namespace Convention
 
 Every public concept SHALL belong to a namespace.

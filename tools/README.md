@@ -6,6 +6,8 @@ reference implementations meant to make the spec verifiable, not a product.
 | Tool | Purpose |
 |------|---------|
 | `mu-fingerprint.ps1` | Reference implementation of the **Semantic Fingerprint** canonicalization defined in [MMAS-Interchange](../02-architecture/MMAS-Interchange.md). |
+| `mu-validate.ps1` | Reference MUIF validator: runs the machine-checkable Abstract Test Procedures (V0–V2) and emits a [Validation Report](../schemas/validation-report.schema.json). Exit 0 if no Error. |
+| `mu-requirements.ps1` | Regenerates [`REQUIREMENTS-INDEX.md`](../REQUIREMENTS-INDEX.md) from the Normative documents. |
 
 ## mu-fingerprint
 

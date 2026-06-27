@@ -1,0 +1,9 @@
+{
+  "muif": { "version": "1.0" },
+  "metaModel": { "id": "urn:mu:mm:test", "csn": "test.model", "version": "1.0.0" },
+  "namespaces": ["test"],
+  "objects": [
+    { "muifType": "Object", "id": "test:A", "csn": "1Bad.CSN", "kind": "Entity", "namespace": "test", "provenance": { "owner": "urn:mu:universe:test" } }
+  ],
+  "conformance": { "muc": "2.0: Conformant", "mmas": "A1" }
+}
