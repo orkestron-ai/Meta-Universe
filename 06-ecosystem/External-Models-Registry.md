@@ -119,25 +119,30 @@ detailed in the [Connector-Catalogue](../06-ecosystem/Connector-Catalogue.md).
 
 | Role | Meaning | Default link | Count |
 |------|---------|--------------|------:|
-| R1 | Foundational Value-Object | EMBED | 7 |
-| R2 | Reference Data / Code List / Classification | REFERENCE | 138 |
-| R3 | Identifier Scheme | REFERENCE | 66 |
-| R4 | Entity Model | REFERENCE | 118 |
-| R5 | Cross-cutting Facet | MIX-IN | 56 |
-| R6 | Aggregate / Document / Message | COMPOSE | 274 |
-| R7 | Upper Ontology / Foundation / Modeling Substrate | ALIGN | 54 |
-| R8 | Infrastructure / Format / Protocol / Tooling | N/A *(or EXTEND for schema languages)* | 467 |
+| R1 | Foundational Value-Object | EMBED | 9 |
+| R2 | Reference Data / Code List / Classification | REFERENCE | 156 |
+| R3 | Identifier Scheme | REFERENCE | 67 |
+| R4 | Entity Model | REFERENCE | 140 |
+| R5 | Cross-cutting Facet | MIX-IN | 55 |
+| R6 | Aggregate / Document / Message | COMPOSE | 263 |
+| R7 | Upper Ontology / Foundation / Modeling Substrate | ALIGN | 22 |
+| R8 | Infrastructure / Format / Protocol / Tooling | N/A *(or EXTEND for schema languages)* | 468 |
 | | **Total** | | **1180** |
 
-By link type: REFERENCE 322 · COMPOSE 274 · N/A 381 · EXTEND 86 · MIX-IN 56 ·
-ALIGN 54 · EMBED 7. The classification is informative guidance, produced by a
-verified multi-agent pass; a standard MAY legitimately be linked differently in a
-justified context.
+By link type: REFERENCE 363 · COMPOSE 263 · N/A 381 · EXTEND 87 · MIX-IN 55 ·
+ALIGN 22 · EMBED 9. The classification is informative guidance, produced by a
+multi-agent pass and refined by an adversarial review pass that re-examined the 455
+most contestable rows and corrected 50 — chiefly demoting domain ontologies,
+metamodels and reference models that had been over-assigned to R7, down to R4
+(entity models) or R2 (concept schemes). R7 is therefore deliberately small: it is
+reserved for genuine upper ontologies (BFO, DOLCE, Common Logic) and the meta-meta
+modeling layers (RDF/RDFS/OWL/SKOS-core, MOF/UML/SysML). A standard MAY still be
+linked differently in a justified context.
 
 The distribution is itself a finding: genuine **value-objects to embed are rare**
-(7) — most reusable structure is concentrated in the curated connectors — while the
-bulk of the catalogue is **infrastructure** to express or move data (R8, 467) and
-**documents/messages** that compose other models (R6, 274). In other words, most
+(9) — most reusable structure is concentrated in the curated connectors — while the
+bulk of the catalogue is **infrastructure** to express or move data (R8, 468) and
+**documents/messages** that compose other models (R6, 263). In other words, most
 standards are not things you nest; they are things you *reference*, *compose with*,
 or *speak* — which is exactly why a small set of embed/reference connectors does so
 much of the integration work.
