@@ -78,7 +78,9 @@ foreach ($f in $files) {
       $n++
       $id = "$mn-R{0:D2}" -f $n
       $level = Get-Level $line
-      $stmt = ($line -replace '\|', '\|').Trim()
+      $stmt = $line.Trim()
+      $stmt = $stmt -replace '\[([^\]]+)\]\([^)]+\)', '$1'   # flatten markdown links to their text
+      $stmt = $stmt -replace '\|', '\|'
       if ($stmt.Length -gt 160) { $stmt = $stmt.Substring(0, 157) + '...' }
       $sec = ($section -replace '\|','\|')
       $rows.Add(('| `{0}` | {1} | {2} | {3} |' -f $id, $level, $sec, $stmt))

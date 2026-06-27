@@ -164,7 +164,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `MUC-R39` | SHALL | Article 19. Technology Independence | Constitutional principles SHALL remain independent of programming languages, storage engines, communication protocols and implementation technologies. |
 | `MUC-R40` | SHALL | Article 20. Constitutional Hierarchy | Lower layers SHALL NOT contradict higher layers. |
 | `MUC-R41` | MAY | Article 21. Conformance | Additional rules MAY be introduced by subordinate standards, provided they do not violate the Constitution. |
-| `MUC-R42` | SHOULD | Requirement Identifiers | Every normative statement in this Constitution carries a stable identifier of the form `MUC-Rnn`, catalogued in the [Requirements Index](../REQUIREMENTS-INDE... |
+| `MUC-R42` | SHOULD | Requirement Identifiers | Every normative statement in this Constitution carries a stable identifier of the form `MUC-Rnn`, catalogued in the Requirements Index (for example, `MUC-R03... |
 | `MUC-R43` | MAY | Requirement Identifiers | Identifiers are generated from the text by `tools/mu-requirements.ps1` and are assigned in reading order. During the Working Draft phase they MAY shift as th... |
 
 ## Extension-Model -- `02-architecture/Extension-Model.md`  (28 requirements)
@@ -231,7 +231,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `MMAS-CORE-R08` | SHALL | 5.4 Object | Objects SHALL possess: |
 | `MMAS-CORE-R09` | SHOULD | 5.5 Property | Every property SHOULD declare: |
 | `MMAS-CORE-R10` | SHALL | 5.6 Relationship | Relationships SHALL explicitly define: |
-| `MMAS-CORE-R11` | SHOULD | 5.7 Event | Events SHOULD be immutable and traceable. The Event primitive is defined in detail in [Event](../04-core-concepts/Event.md). |
+| `MMAS-CORE-R11` | SHOULD | 5.7 Event | Events SHOULD be immutable and traceable. The Event primitive is defined in detail in Event. |
 | `MMAS-CORE-R12` | SHALL | 5.8 Projection | A projection SHALL NOT redefine object identity. |
 | `MMAS-CORE-R13` | SHALL | 5.10 Context | Context SHALL be explicit whenever meaning depends upon it. |
 | `MMAS-CORE-R14` | SHALL | 6. Public Schema | Every Meta-Model SHALL expose a public schema. |
@@ -320,11 +320,11 @@ Tooling, Conformance and Validation reference these IDs.
 | `NAME-R09` | SHOULD | 5. Identifier vs Display Name | Identifiers SHOULD remain stable. |
 | `NAME-R10` | SHALL | 6. Canonical Semantic Name (CSN) | The distinction between Identifier and Display Name is generalized, for every public concept, into a **Canonical Semantic Name (CSN)**. Each public concept S... |
 | `NAME-R11` | SHALL | 6. Canonical Semantic Name (CSN) | - Every public concept SHALL have exactly one CSN. |
-| `NAME-R12` | SHALL | 6. Canonical Semantic Name (CSN) | - A CSN SHALL be immutable once published; renaming a concept SHALL be treated as a semantic change under [Versioning](Versioning.md) and SHALL produce a new... |
+| `NAME-R12` | SHALL | 6. Canonical Semantic Name (CSN) | - A CSN SHALL be immutable once published; renaming a concept SHALL be treated as a semantic change under Versioning and SHALL produce a new CSN, never a sil... |
 | `NAME-R13` | SHALL | 6. Canonical Semantic Name (CSN) | - All **federation interactions SHALL exchange CSNs**. The Meta-Universe Federation Protocol (MUFP) transmits CSNs; it SHALL NOT rely on Display Names for id... |
 | `NAME-R14` | SHOULD | 6. Canonical Semantic Name (CSN) | - User interfaces SHOULD present the localized Display Name while resolving it to the underlying CSN. |
 | `NAME-R15` | SHALL | 6. Canonical Semantic Name (CSN) | - Display Names MAY differ across languages, contexts and presentations; the CSN SHALL remain the same. |
-| `NAME-R16` | SHOULD | 6. Canonical Semantic Name (CSN) | To prevent name collisions across a federation, a CSN SHOULD be paired with the [Semantic Fingerprint](Versioning.md) of the concept's defining version. Toge... |
+| `NAME-R16` | SHOULD | 6. Canonical Semantic Name (CSN) | To prevent name collisions across a federation, a CSN SHOULD be paired with the Semantic Fingerprint of the concept's defining version. Together, the CSN ide... |
 | `NAME-R17` | SHALL | 7. Namespace Convention | Every public concept SHALL belong to a namespace. |
 | `NAME-R18` | SHALL | 7. Namespace Convention | Namespaces SHALL be globally unique within their semantic scope. |
 | `NAME-R19` | SHOULD | 8. Meta-Model Naming | Meta-Models SHOULD use descriptive names. |
@@ -357,7 +357,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `TRACE-R05` | SHALL | 4. Provenance | Unknown provenance SHALL be explicitly indicated. |
 | `TRACE-R06` | SHOULD | 5. Semantic Lineage | Provenance records *where a fact came from*. **Semantic Lineage** is broader: it records the **history of the origin of meaning** — the chain of facts, sourc... |
 | `TRACE-R07` | SHALL | 5. Semantic Lineage | Given Semantic Lineage, an AI agent SHALL be able to answer, for any significant derived fact: |
-| `TRACE-R08` | SHALL | 5. Semantic Lineage | Semantic Lineage builds directly on the [Event](../04-core-concepts/Event.md) primitive, since each derivation step SHOULD be expressed as an immutable, trac... |
+| `TRACE-R08` | SHALL | 5. Semantic Lineage | Semantic Lineage builds directly on the Event primitive, since each derivation step SHOULD be expressed as an immutable, traceable Event, and on Dependency T... |
 | `TRACE-R09` | SHALL | 6. Ownership Traceability | Ownership SHALL remain traceable throughout the lifecycle of every significant semantic fact. |
 | `TRACE-R10` | SHOULD | 6. Ownership Traceability | Ownership history SHOULD preserve: |
 | `TRACE-R11` | SHALL | 7. Version Traceability | Every versioned artifact SHALL preserve references to: |
@@ -387,15 +387,15 @@ Tooling, Conformance and Validation reference these IDs.
 
 | ID | Level | Section | Statement |
 |----|-------|---------|-----------|
-| `VAL-R01` | MAY | 5. Validation Levels | V0–V3 are **mandatory** for any MMAS-conformant model. V4 is required for any model that participates in [federation](../03-federation/MUFP.md). V5 is OPTION... |
+| `VAL-R01` | MAY | 5. Validation Levels | V0–V3 are **mandatory** for any MMAS-conformant model. V4 is required for any model that participates in federation. V5 is OPTIONAL and applies to running im... |
 | `VAL-R02` | SHALL | 5a. Abstract Test Procedures | Each validation level is defined by a set of **Abstract Test Procedures (ATPs)** — checks that a conforming validator SHALL perform. Each check has a stable ... |
 | `VAL-R03` | SHALL | V5 — Runtime *(optional)* | A validator MAY add checks, but SHALL implement at least the Error-severity checks of every level it claims to verify. |
 | `VAL-R04` | SHALL | 6. Severity Classification | A validation result SHALL classify each finding by severity: |
 | `VAL-R05` | SHOULD | 6. Severity Classification | - **Warning** — a concern that does not block conformance but SHOULD be addressed. |
 | `VAL-R06` | SHALL | 7. Validation Report | A validation run SHALL produce a **Validation Report** that includes: |
-| `VAL-R07` | SHALL | 7. Validation Report | For each level attempted, the report SHALL record the status of every ATP check (Section 5a) by check ID. The machine-readable structure is defined by [`sche... |
-| `VAL-R08` | MAY | 7. Validation Report | The report is itself a traceable artifact and MAY be referenced by a [Conformance Statement](../02-architecture/MMAS-Conformance.md) or a [Certificate](../06... |
-| `VAL-R09` | SHALL | 8. Validation of Imported Standards | When a meta-model imports an external standard as a [Semantic Package](../02-architecture/Extension-Model.md), the imported package SHALL be validated: |
+| `VAL-R07` | SHALL | 7. Validation Report | For each level attempted, the report SHALL record the status of every ATP check (Section 5a) by check ID. The machine-readable structure is defined by `schem... |
+| `VAL-R08` | MAY | 7. Validation Report | The report is itself a traceable artifact and MAY be referenced by a Conformance Statement or a Certificate. |
+| `VAL-R09` | SHALL | 8. Validation of Imported Standards | When a meta-model imports an external standard as a Semantic Package, the imported package SHALL be validated: |
 | `VAL-R10` | SHALL | 9. Continuous Validation | Validation SHALL be applied across the meta-model lifecycle: |
 | `VAL-R11` | SHALL | 9. Continuous Validation | A change that lowers a model's achieved validation level SHALL be treated as a significant change under the Change Process. |
 | `VAL-R12` | SHALL | 11. Architectural Invariants | - Validation SHALL be layered (V0 through V5). |
@@ -841,7 +841,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `CON-R18` | SHOULD | 9a. Executable Semantic Contract | A Semantic Contract SHOULD be capable of expression as an **Executable Semantic Contract** — an active control mechanism rather than a static document. Where... |
 | `CON-R19` | SHOULD | 9a. Executable Semantic Contract | An Executable Semantic Contract SHOULD make machine-evaluable at least: |
 | `CON-R20` | SHALL | 9a. Executable Semantic Contract | - **which fields are hidden** — attributes that SHALL NOT appear in any exposed Projection; |
-| `CON-R21` | SHALL | 9a. Executable Semantic Contract | - **which events are sent to the owner** — the [Events](../04-core-concepts/Event.md) that SHALL be reported back to the owning Universe (for example access,... |
+| `CON-R21` | SHALL | 9a. Executable Semantic Contract | - **which events are sent to the owner** — the Events that SHALL be reported back to the owning Universe (for example access, derivation or redistribution); |
 | `CON-R22` | SHALL | 9a. Executable Semantic Contract | - **which actions are forbidden** — operations the consuming party SHALL NOT perform on the licensed knowledge; |
 | `CON-R23` | SHALL | 9a. Executable Semantic Contract | - **under which conditions the contract terminates** — the triggers (expiry, breach, revocation, purpose change) upon which the license ends and consumption ... |
 | `CON-R24` | SHOULD | 9a. Executable Semantic Contract | An Executable Semantic Contract turns the contract from a description of intent into an enforced boundary: a conforming implementation SHOULD deny any exposu... |
@@ -901,8 +901,8 @@ Tooling, Conformance and Validation reference these IDs.
 | `EVT-R04` | SHOULD | 6. Categories of Events | Events SHOULD be classified to support reasoning and federation: |
 | `EVT-R05` | SHALL | 7. Temporal Model | Every Event SHALL be associated with at least one time: |
 | `EVT-R06` | SHOULD | 7. Temporal Model | These MAY differ. A change in the real world may be recorded later, and the difference itself is semantically meaningful. Implementations SHOULD preserve bot... |
-| `EVT-R07` | SHALL | 8. Identity, Provenance and Immutability | Each Event SHALL possess a stable [Identity](../04-core-concepts/Identity.md), independent of the entities it affects. |
-| `EVT-R08` | SHALL | 8. Identity, Provenance and Immutability | Each Event SHALL declare its [provenance](../02-architecture/Traceability.md): the actor, the authority under which it was asserted, and the source of the as... |
+| `EVT-R07` | SHALL | 8. Identity, Provenance and Immutability | Each Event SHALL possess a stable Identity, independent of the entities it affects. |
+| `EVT-R08` | SHALL | 8. Identity, Provenance and Immutability | Each Event SHALL declare its provenance: the actor, the authority under which it was asserted, and the source of the assertion. |
 | `EVT-R09` | SHALL | 8. Identity, Provenance and Immutability | Once recorded, an Event SHALL NOT be modified or deleted. Corrections are themselves expressed as new Events that reference the Event being corrected. This p... |
 | `EVT-R10` | MAY | 9. Causality | Events MAY reference the Events or facts that caused them, forming a causal graph. |
 | `EVT-R11` | MAY | 10. Federation of Events | An Event MAY be disclosed to another Universe only: |
@@ -966,7 +966,7 @@ Tooling, Conformance and Validation reference these IDs.
 |----|-------|---------|-----------|
 | `LIFE-R01` | SHALL | 1a. Three Independent Times | A single Meta-Object does not advance along one timeline but along **three independent times**, which SHALL NOT be conflated: |
 | `LIFE-R02` | MAY | 1a. Three Independent Times | These three times run in parallel and combine freely. One Meta-Object MAY, at the same instant, be **Active** as an object, carry an **active version 3.2**, ... |
-| `LIFE-R03` | SHALL | 1a. Three Independent Times | Every transition in each of the three times SHALL be recorded through the [Event](../04-core-concepts/Event.md) primitive on the Semantic Timeline, so that t... |
+| `LIFE-R03` | SHALL | 1a. Three Independent Times | Every transition in each of the three times SHALL be recorded through the Event primitive on the Semantic Timeline, so that the three histories remain indepe... |
 | `LIFE-R04` | MAY | 2. Scope | Domain Meta-Models MAY define additional lifecycle states and transitions. |
 | `LIFE-R05` | SHALL | 3. Lifecycle Principles | Every Lifecycle SHALL be: |
 | `LIFE-R06` | SHALL | 3. Lifecycle Principles | Lifecycle SHALL describe semantic state rather than implementation state. |
@@ -1035,7 +1035,7 @@ Tooling, Conformance and Validation reference these IDs.
 | ID | Level | Section | Statement |
 |----|-------|---------|-----------|
 | `OBJ-R01` | SHALL | 1. Purpose | Every meaningful entity represented within a Meta-Universe SHALL be modeled as a Meta-Object or as a specialization of a Meta-Object. |
-| `OBJ-R02` | SHALL | 2. Definition | A Meta-Object SHALL NEVER be copied between Universes. When an entity owned by one Universe is needed by another, only [Projections](../04-core-concepts/Proj... |
+| `OBJ-R02` | SHALL | 2. Definition | A Meta-Object SHALL NEVER be copied between Universes. When an entity owned by one Universe is needed by another, only Projections cross the boundary — each ... |
 | `OBJ-R03` | SHALL | 2a. Not a Database Record | A conforming implementation SHALL treat the Meta-Object as the architectural point of truth and SHALL NOT conflate it with any physical storage of its attrib... |
 | `OBJ-R04` | SHALL | 3. Object Principles | Every Meta-Object SHALL satisfy the following principles: |
 | `OBJ-R05` | MAY | 4. Object Categories | Domain Meta-Models MAY define additional categories. |
@@ -1062,7 +1062,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `OBJ-R26` | SHALL | 12. Traceability | Traceability SHALL survive federation. |
 | `OBJ-R27` | MAY | 13. Federation | A Meta-Object MAY participate in federation. |
 | `OBJ-R28` | SHALL | 13. Federation | Federation SHALL exchange semantic Projections rather than transferring ownership of the Meta-Object. A Meta-Object SHALL NEVER be copied between Universes. |
-| `OBJ-R29` | SHALL | 13. Federation | Each [Projection](../04-core-concepts/Projection.md) exchanged across a boundary SHALL reference exactly one Meta-Object, linked through its Canonical [Ident... |
+| `OBJ-R29` | SHALL | 13. Federation | Each Projection exchanged across a boundary SHALL reference exactly one Meta-Object, linked through its Canonical Identity and governed by the applicable fed... |
 | `OBJ-R30` | SHALL | 13. Federation | The authoritative Universe SHALL remain the source of truth for the canonical object. |
 | `OBJ-R31` | SHOULD | 14. Public Metadata | Every public Meta-Object SHOULD expose at least: |
 | `OBJ-R32` | MAY | 14. Public Metadata | Additional metadata MAY require authorization. |
@@ -1080,7 +1080,7 @@ Tooling, Conformance and Validation reference these IDs.
 | ID | Level | Section | Statement |
 |----|-------|---------|-----------|
 | `PROJ-R01` | MAY | 1b. Federation Without Loss of Sovereignty | One Meta-Object MAY carry many Projections at once, for example: |
-| `PROJ-R02` | SHALL | 1b. Federation Without Loss of Sovereignty | All such Projections SHALL reference the **same Canonical [Identity](../04-core-concepts/Identity.md)**, SHALL be governed by **[Semantic Contracts](../04-co... |
+| `PROJ-R02` | SHALL | 1b. Federation Without Loss of Sovereignty | All such Projections SHALL reference the **same Canonical Identity**, SHALL be governed by **Semantic Contracts**, and SHALL exist for **different declared P... |
 | `PROJ-R03` | SHALL | 2. Definition | A Projection SHALL: |
 | `PROJ-R04` | SHALL | 3. Projection Principles | Every Projection SHALL be: |
 | `PROJ-R05` | MAY | 3. Projection Principles | Different Projections MAY legitimately expose different subsets or interpretations of the same Meta-Object. |
@@ -1136,7 +1136,7 @@ Tooling, Conformance and Validation reference these IDs.
 | `REL-R17` | SHOULD | 9. Lifecycle | A Relationship SHOULD progress through explicit lifecycle states such as: |
 | `REL-R18` | SHALL | 9. Lifecycle | Lifecycle transitions SHALL be represented through Events. |
 | `REL-R19` | MAY | 10. Temporal Validity | A Relationship MAY include temporal validity. |
-| `REL-R20` | SHALL | 10. Temporal Validity | The temporal validity and lifecycle of a Relationship SHALL be expressed through the [Event](../04-core-concepts/Event.md) primitive and recorded on the Sema... |
+| `REL-R20` | SHALL | 10. Temporal Validity | The temporal validity and lifecycle of a Relationship SHALL be expressed through the Event primitive and recorded on the Semantic Timeline, so that *when* a ... |
 | `REL-R21` | SHALL | 10. Temporal Validity | Temporal validity SHALL NOT affect canonical identity. |
 | `REL-R22` | SHOULD | 11. Events | Creation, modification and retirement of Relationships SHOULD be represented by immutable Events. |
 | `REL-R23` | SHALL | 11. Events | Historical states SHALL remain reconstructable. |
@@ -1156,7 +1156,7 @@ Tooling, Conformance and Validation reference these IDs.
 | ID | Level | Section | Statement |
 |----|-------|---------|-----------|
 | `UNI-R01` | SHALL | 2. Definition | A Universe SHALL be characterized by its constitutional laws, governing authority, identity system and trust system rather than by any inventory of the objec... |
-| `UNI-R02` | MAY | 2a. Kinds of Universe | A Universe MAY be of one of three kinds. All three kinds are equal in standing, governed by the **same Constitution** ([MUC](../01-constitution/Meta-Universe... |
+| `UNI-R02` | MAY | 2a. Kinds of Universe | A Universe MAY be of one of three kinds. All three kinds are equal in standing, governed by the **same Constitution** (MUC) and federated through the **same ... |
 | `UNI-R03` | SHALL | Virtual Universe | A Virtual Universe is a fully artificial jurisdiction, owned by AI agents or digital organizations. It governs semantic reality that exists only within the M... |
 | `UNI-R04` | SHALL | Virtual Universe | A Universe SHALL declare its kind as part of its public metadata. The kind SHALL NOT alter the constitutional obligations of the Universe. |
 | `UNI-R05` | SHALL | 3. Characteristics | Every Universe SHALL possess: |
