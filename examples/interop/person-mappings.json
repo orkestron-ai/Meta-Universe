@@ -1,0 +1,49 @@
+{
+  "mappingId": "urn:mu:mapping:employee-person-to-external-standards",
+  "version": "1.0.0",
+  "authority": "urn:mu:universe:acme",
+  "source": {
+    "metaModel": "urn:mu:metamodel:acme.employee",
+    "object": "employee.person",
+    "fingerprint": "sha256:<placeholder-fingerprint-of-acme.employee>"
+  },
+  "targets": [
+    {
+      "standard": "Schema.org",
+      "object": "schema:Person",
+      "relation": "broader",
+      "rationale": "schema:Person covers any human; employee.person is the subset that is an employee, so the canonical Schema.org concept is broader than the local one.",
+      "mappings": [
+        { "from": "employee.givenName", "to": "schema:givenName", "relation": "equivalent" },
+        { "from": "employee.familyName", "to": "schema:familyName", "relation": "equivalent" },
+        { "from": "employee.birthDate", "to": "schema:birthDate", "relation": "equivalent" }
+      ]
+    },
+    {
+      "standard": "HL7 FHIR",
+      "object": "fhir:Patient",
+      "relation": "narrower",
+      "rationale": "fhir:Patient models a person in a clinical role; employee.person is a person in an employment role. The two are sibling specializations of a person, mapped here for the demographic core they share.",
+      "mappings": [
+        { "from": "employee.givenName", "to": "fhir:Patient.name.given", "relation": "equivalent" },
+        { "from": "employee.familyName", "to": "fhir:Patient.name.family", "relation": "equivalent" },
+        { "from": "employee.birthDate", "to": "fhir:Patient.birthDate", "relation": "equivalent" }
+      ]
+    },
+    {
+      "standard": "FOAF",
+      "object": "foaf:Person",
+      "relation": "broader",
+      "rationale": "foaf:Person is the general agent-who-is-a-person concept; employee.person is a narrower employment-scoped person, so foaf:Person is broader.",
+      "mappings": [
+        { "from": "employee.givenName", "to": "foaf:givenName", "relation": "equivalent" },
+        { "from": "employee.familyName", "to": "foaf:familyName", "relation": "equivalent" },
+        { "from": "employee.birthDate", "to": "foaf:birthday", "relation": "narrower" }
+      ]
+    }
+  ],
+  "provenance": {
+    "owner": "urn:mu:universe:acme",
+    "authority": "acme semantic mapping authority"
+  }
+}

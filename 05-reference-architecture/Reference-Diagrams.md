@@ -270,6 +270,8 @@ Reference diagrams SHALL:
 
 # 16. Meta-Universe Diagram Language (MUDL)
 
+The full MUDL specification is in [MUDL](MUDL.md), and the canonical diagrams rendered as Mermaid sources live in [`assets/`](../assets/).
+
 The diagrams above standardize the *meaning* of Meta-Universe pictures, but not yet their *machine-readable form*: today a diagram's intent is canonical while its rendering is hand-drawn. The **Meta-Universe Diagram Language (MUDL)** closes this gap by standardizing a machine-readable representation of diagrams, so that a diagram becomes just another Projection of the meta-model rather than a separate, hand-maintained artifact.
 
 MUDL defines:

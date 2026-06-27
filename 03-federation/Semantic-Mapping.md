@@ -254,6 +254,8 @@ Examples include:
 
 These examples are informative rather than normative.
 
+A worked interop appendix is in [examples/interop/](../examples/interop/) — it imports Schema.org as a Semantic Package, maps a local `employee.person` to Schema.org, FHIR and FOAF, and projects the Object to RDF/OWL.
+
 ---
 
 # 16. Future Directions

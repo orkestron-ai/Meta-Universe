@@ -1,0 +1,63 @@
+{
+  "muif": { "version": "1.0" },
+  "semanticPackage": {
+    "id": "urn:mu:package:import:schemaorg.person",
+    "csn": "import.schemaorg.person",
+    "version": "1.0.0",
+    "displayName": "Schema.org Person — imported Semantic Package",
+    "fingerprint": "sha256:<placeholder-canonicalized-digest-of-this-package>"
+  },
+  "source": {
+    "standard": "Schema.org",
+    "authority": "https://schema.org",
+    "homepage": "https://schema.org/Person",
+    "importedVersion": "schemaorg-29.0",
+    "compatibleVersionRange": ">=12.0 <30.0",
+    "importDate": "2026-06-27",
+    "localOwner": "urn:mu:universe:acme"
+  },
+  "importedNamespaces": [
+    { "prefix": "schema", "uri": "https://schema.org/" }
+  ],
+  "selectedObjects": [
+    {
+      "muifType": "Object",
+      "id": "schema:Person",
+      "csn": "schema.person",
+      "kind": "Entity",
+      "namespace": "schema",
+      "imported": true,
+      "originalIdentifier": "https://schema.org/Person",
+      "provenance": {
+        "owner": "https://schema.org",
+        "authority": "Schema.org"
+      },
+      "properties": [
+        {
+          "name": "schema.givenName",
+          "originalIdentifier": "https://schema.org/givenName",
+          "valueType": "string",
+          "required": false
+        },
+        {
+          "name": "schema.familyName",
+          "originalIdentifier": "https://schema.org/familyName",
+          "valueType": "string",
+          "required": false
+        },
+        {
+          "name": "schema.birthDate",
+          "originalIdentifier": "https://schema.org/birthDate",
+          "valueType": "date",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "localExtensions": [],
+  "semanticMappings": "person-mappings.json",
+  "compatibilityConstraints": [
+    "schema:Person properties used as imported; local model SHALL NOT redefine schema.org semantics.",
+    "schema:givenName / schema:familyName / schema:birthDate retain Schema.org cardinality and meaning."
+  ]
+}
