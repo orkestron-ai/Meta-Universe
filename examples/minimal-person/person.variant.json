@@ -1,0 +1,79 @@
+{
+  "conformance": { "mufp": "Level 2", "mmas": "A4", "muc": "2.0: Conformant" },
+  "metaModel": {
+    "description": "A different, non-semantic description that MUST NOT affect the fingerprint.",
+    "displayName": "Person MM (renamed label — non-semantic)",
+    "fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "version": "1.0.0",
+    "csn": "examples.minimalPerson",
+    "id": "urn:mu:metamodel:minimal-person"
+  },
+  "events": [
+    {
+      "provenance": { "owner": "urn:mu:universe:acme" },
+      "assertionTime": "2030-09-09T09:09:09Z",
+      "occurrenceTime": "2026-01-01T00:00:00Z",
+      "subject": "person:Person",
+      "type": "Lifecycle",
+      "id": "person:event:created:1",
+      "muifType": "Event"
+    }
+  ],
+  "projections": [
+    {
+      "displayName": "Public projection",
+      "contract": "person:contract:hr-disclosure",
+      "fields": ["person.familyName", "person.givenName"],
+      "purpose": "Public directory listing",
+      "context": "Public",
+      "subject": "person:Person",
+      "id": "person:projection:public",
+      "muifType": "Projection"
+    }
+  ],
+  "contracts": [
+    {
+      "muifType": "Contract",
+      "description": "non-semantic note",
+      "id": "person:contract:hr-disclosure",
+      "kind": "KnowledgeDisclosure",
+      "purpose": "HR onboarding",
+      "parties": ["urn:mu:universe:gov-tax", "urn:mu:universe:acme"],
+      "permissions": ["read:person.familyName", "read:person.givenName"],
+      "restrictions": ["purpose-bound", "no-store"]
+    }
+  ],
+  "relationships": [
+    {
+      "muifType": "Relationship",
+      "id": "person:reportsTo:1",
+      "kind": "reportsTo",
+      "source": "person:Person",
+      "target": "person:Person",
+      "cardinality": "0..1",
+      "provenance": { "owner": "urn:mu:universe:acme" }
+    }
+  ],
+  "objects": [
+    {
+      "muifType": "Object",
+      "id": "person:Person",
+      "csn": "person.person",
+      "kind": "Entity",
+      "namespace": "person",
+      "displayName": "Person",
+      "provenance": { "owner": "urn:mu:universe:acme" },
+      "properties": [
+        { "name": "person.birthDate", "valueType": "dateTime", "required": false },
+        { "name": "person.familyName", "valueType": "string", "required": true, "description": "surname" },
+        { "name": "person.givenName", "valueType": "string", "required": true }
+      ]
+    }
+  ],
+  "bundles": [
+    { "displayName": "Core", "csn": "person.core", "layers": ["person.core.identity"] }
+  ],
+  "namespaces": ["person"],
+  "_note": "underscore-prefixed and x-ui* keys are dropped too",
+  "muif": { "version": "1.0" }
+}

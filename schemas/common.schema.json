@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/common.schema.json",
+  "title": "MUIF Common Definitions",
+  "description": "Shared definitions for the Meta-Universe Interchange Format (MUIF) v1.0.",
+  "$defs": {
+    "csn": {
+      "type": "string",
+      "description": "Canonical Semantic Name: dot-separated lowerCamelCase segments, e.g. employee.compensation.salaryAgreement.",
+      "pattern": "^[a-z][a-zA-Z0-9]*(\\.[a-z][a-zA-Z0-9]*)*$",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "identifier": {
+      "type": "string",
+      "description": "A stable identifier. RECOMMENDED forms: a URI, a URN, a UUID, or a scheme:value pair (e.g. employee:12345). Opaque and compared as-is.",
+      "minLength": 1,
+      "maxLength": 1024
+    },
+    "canonicalIdentity": {
+      "type": "object",
+      "description": "A Canonical Identity: who an object is from the perspective of its owner.",
+      "required": ["scheme", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "scheme": { "type": "string", "minLength": 1, "description": "Identifier scheme, e.g. 'uuid', 'uri', 'urn', or an owner-defined scheme." },
+        "value": { "type": "string", "minLength": 1, "description": "The identifier value within the scheme." }
+      }
+    },
+    "semver": {
+      "type": "string",
+      "description": "Semantic version (semver 2.0.0).",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "semverRange": {
+      "type": "string",
+      "description": "A compatible version range, e.g. '>=2.0.0 <3.0.0' or '^2.3.1'.",
+      "minLength": 1
+    },
+    "fingerprint": {
+      "type": "string",
+      "description": "Semantic Fingerprint: sha256 over the MUIF canonical form (see MMAS-Interchange).",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "lifecycleState": {
+      "type": "string",
+      "description": "Object/Projection/Contract lifecycle state (see Lifecycle).",
+      "enum": ["Draft", "Active", "Deprecated", "Retired", "Suspended", "Terminated"]
+    },
+    "cardinality": {
+      "type": "string",
+      "description": "Relationship cardinality.",
+      "enum": ["1..1", "0..1", "1..*", "0..*", "*..*"]
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Provenance of a semantic fact (see Traceability). 'owner' is semantic; 'assertedAt' is non-semantic and excluded from the fingerprint.",
+      "required": ["owner"],
+      "additionalProperties": false,
+      "properties": {
+        "owner": { "$ref": "#/$defs/identifier", "description": "The identity that owns / asserts the fact." },
+        "authority": { "type": "string", "description": "The authority under which the fact is asserted." },
+        "source": { "type": "string", "description": "Where the assertion originates." },
+        "assertedAt": { "type": "string", "format": "date-time", "description": "When the fact was asserted. NON-SEMANTIC: excluded from the Semantic Fingerprint." }
+      }
+    },
+    "conformance": {
+      "type": "object",
+      "description": "Declared conformance of the meta-model.",
+      "additionalProperties": false,
+      "properties": {
+        "muc": { "type": "string", "description": "MUC conformance, e.g. '2.0: Conformant'." },
+        "mmas": { "type": "string", "enum": ["A1", "A2", "A3", "A4", "A5"], "description": "MMAS architectural maturity level." },
+        "mufp": { "type": "string", "description": "MUFP federation level, e.g. 'Level 3'." }
+      }
+    }
+  }
+}

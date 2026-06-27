@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/contract.schema.json",
+  "title": "MUIF Semantic Contract",
+  "description": "A Semantic Contract: a semantic license on knowledge (see 04-core-concepts/Contract.md).",
+  "type": "object",
+  "required": ["muifType", "id", "kind", "purpose", "parties"],
+  "additionalProperties": false,
+  "properties": {
+    "muifType": { "const": "Contract" },
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "kind": {
+      "type": "string",
+      "enum": ["SemanticContract", "KnowledgeDisclosure", "Projection", "Delegation", "Capability", "Service", "Federation"],
+      "description": "Contract type in the Semantic Contract hierarchy."
+    },
+    "purpose": { "type": "string", "minLength": 1, "description": "The explicit purpose the contract authorizes. SEMANTIC." },
+    "parties": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Identities party to the contract (treated as a set).",
+      "items": { "$ref": "common.schema.json#/$defs/identifier" }
+    },
+    "permissions": { "type": "array", "items": { "type": "string" }, "description": "What the contract permits (treated as a set)." },
+    "restrictions": { "type": "array", "items": { "type": "string" }, "description": "What the contract forbids (treated as a set)." },
+    "terminationConditions": { "type": "array", "items": { "type": "string" }, "description": "Conditions under which the contract terminates." },
+    "lifecycleState": { "$ref": "common.schema.json#/$defs/lifecycleState" },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" },
+    "displayName": { "type": "string", "description": "NON-SEMANTIC." },
+    "description": { "type": "string", "description": "NON-SEMANTIC." }
+  }
+}

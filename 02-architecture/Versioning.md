@@ -125,7 +125,7 @@ The Semantic Fingerprint serves several purposes:
 - **Pre-federation compatibility check** — compare fingerprints before federation to decide whether negotiation or mapping is required;
 - **Dependency and migration graphs** — use fingerprints as stable nodes when constructing version dependency and migration graphs across a federation.
 
-The fingerprint SHALL be reproducible: any conforming implementation given the same semantic structure SHALL compute the same value. The normalization procedure SHALL be documented so that fingerprints remain comparable across tools.
+The fingerprint SHALL be reproducible: any conforming implementation given the same semantic structure SHALL compute the same value. The exact canonical serialization, the semantic/non-semantic field separation, and the hashing procedure are defined normatively in [MMAS-Interchange (MUIF)](MMAS-Interchange.md), with a verified worked example and a reference implementation.
 
 The Semantic Fingerprint pairs with the [Canonical Semantic Name](Naming-Conventions.md) to identify a concept both by stable name and by stable meaning, and it is one of the metadata fields carried by a [Semantic Distribution Package](MMAS-Package.md).
 

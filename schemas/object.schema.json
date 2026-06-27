@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/object.schema.json",
+  "title": "MUIF Object",
+  "description": "A Meta-Object: a Semantic Point of Truth (see 04-core-concepts/Object.md).",
+  "type": "object",
+  "required": ["muifType", "id", "csn", "kind", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "muifType": { "const": "Object" },
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "csn": { "$ref": "common.schema.json#/$defs/csn" },
+    "canonicalIdentity": { "$ref": "common.schema.json#/$defs/canonicalIdentity" },
+    "displayName": { "type": "string", "description": "Human label. NON-SEMANTIC: excluded from the fingerprint." },
+    "description": { "type": "string", "description": "NON-SEMANTIC: excluded from the fingerprint." },
+    "kind": { "type": "string", "enum": ["Entity", "Value", "Abstract", "Agent", "Resource"], "description": "Object category." },
+    "namespace": { "$ref": "common.schema.json#/$defs/csn" },
+    "lifecycleState": { "$ref": "common.schema.json#/$defs/lifecycleState" },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" },
+    "properties": {
+      "type": "array",
+      "description": "Semantic properties of the object (treated as a set for fingerprinting).",
+      "items": {
+        "type": "object",
+        "required": ["name", "valueType"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "$ref": "common.schema.json#/$defs/csn" },
+          "valueType": { "type": "string", "description": "A primitive type (string, integer, boolean, decimal, dateTime) or a CSN referencing another object." },
+          "required": { "type": "boolean", "default": false },
+          "multiplicity": { "$ref": "common.schema.json#/$defs/cardinality" },
+          "description": { "type": "string", "description": "NON-SEMANTIC." }
+        }
+      }
+    },
+    "imports": {
+      "type": "array",
+      "description": "CSNs of external concepts this object extends or maps to.",
+      "items": { "$ref": "common.schema.json#/$defs/csn" }
+    }
+  }
+}

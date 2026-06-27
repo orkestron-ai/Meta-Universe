@@ -1,0 +1,73 @@
+{
+  "muif": { "version": "1.0" },
+  "metaModel": {
+    "id": "urn:mu:metamodel:minimal-person",
+    "csn": "examples.minimalPerson",
+    "version": "1.0.0",
+    "displayName": "Minimal Person Meta-Model"
+  },
+  "namespaces": ["person"],
+  "bundles": [
+    { "csn": "person.core", "layers": ["person.core.identity"] }
+  ],
+  "objects": [
+    {
+      "muifType": "Object",
+      "id": "person:Person",
+      "csn": "person.person",
+      "kind": "Entity",
+      "namespace": "person",
+      "provenance": { "owner": "urn:mu:universe:acme" },
+      "properties": [
+        { "name": "person.givenName", "valueType": "string", "required": true },
+        { "name": "person.familyName", "valueType": "string", "required": true },
+        { "name": "person.birthDate", "valueType": "dateTime", "required": false }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "muifType": "Relationship",
+      "id": "person:reportsTo:1",
+      "kind": "reportsTo",
+      "source": "person:Person",
+      "target": "person:Person",
+      "cardinality": "0..1",
+      "provenance": { "owner": "urn:mu:universe:acme" }
+    }
+  ],
+  "contracts": [
+    {
+      "muifType": "Contract",
+      "id": "person:contract:hr-disclosure",
+      "kind": "KnowledgeDisclosure",
+      "purpose": "HR onboarding",
+      "parties": ["urn:mu:universe:acme", "urn:mu:universe:gov-tax"],
+      "permissions": ["read:person.givenName", "read:person.familyName"],
+      "restrictions": ["no-store", "purpose-bound"]
+    }
+  ],
+  "projections": [
+    {
+      "muifType": "Projection",
+      "id": "person:projection:public",
+      "subject": "person:Person",
+      "context": "Public",
+      "purpose": "Public directory listing",
+      "fields": ["person.givenName", "person.familyName"],
+      "contract": "person:contract:hr-disclosure"
+    }
+  ],
+  "events": [
+    {
+      "muifType": "Event",
+      "id": "person:event:created:1",
+      "type": "Lifecycle",
+      "subject": "person:Person",
+      "occurrenceTime": "2026-01-01T00:00:00Z",
+      "assertionTime": "2026-01-02T12:00:00Z",
+      "provenance": { "owner": "urn:mu:universe:acme" }
+    }
+  ],
+  "conformance": { "muc": "2.0: Conformant", "mmas": "A4", "mufp": "Level 2" }
+}

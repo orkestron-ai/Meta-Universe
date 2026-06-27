@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/relationship.schema.json",
+  "title": "MUIF Relationship",
+  "description": "A Relationship: a first-class semantic entity connecting Meta-Objects (see 04-core-concepts/Relationship.md).",
+  "type": "object",
+  "required": ["muifType", "id", "kind", "source", "target"],
+  "additionalProperties": false,
+  "properties": {
+    "muifType": { "const": "Relationship" },
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "csn": { "$ref": "common.schema.json#/$defs/csn" },
+    "kind": { "$ref": "common.schema.json#/$defs/csn", "description": "Relationship class, ideally from a Relationship Profile (reportsTo, owns, memberOf, dependsOn, implements, ...)." },
+    "source": { "$ref": "common.schema.json#/$defs/identifier", "description": "Identifier of the source Meta-Object." },
+    "target": { "$ref": "common.schema.json#/$defs/identifier", "description": "Identifier of the target Meta-Object." },
+    "cardinality": { "$ref": "common.schema.json#/$defs/cardinality" },
+    "temporalValidity": {
+      "type": "object",
+      "description": "Period during which the relationship holds. SEMANTIC.",
+      "additionalProperties": false,
+      "properties": {
+        "from": { "type": "string", "format": "date-time" },
+        "to": { "type": "string", "format": "date-time" }
+      }
+    },
+    "lifecycleState": { "$ref": "common.schema.json#/$defs/lifecycleState" },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" },
+    "displayName": { "type": "string", "description": "NON-SEMANTIC." },
+    "description": { "type": "string", "description": "NON-SEMANTIC." }
+  }
+}

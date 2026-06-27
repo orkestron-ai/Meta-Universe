@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/manifest.schema.json",
+  "title": "MUIF Meta-Model Manifest",
+  "description": "The entry point of a MUIF meta-model package. Encodes the MMAS Composition Hierarchy (Meta-Model -> Bundles -> Layers -> Objects/Relationships/Events/Contracts/Projections).",
+  "type": "object",
+  "required": ["muif", "metaModel", "conformance"],
+  "additionalProperties": false,
+  "properties": {
+    "muif": {
+      "type": "object",
+      "required": ["version"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "const": "1.0", "description": "MUIF format version." }
+      }
+    },
+    "metaModel": {
+      "type": "object",
+      "required": ["id", "csn", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/identifier" },
+        "csn": { "$ref": "common.schema.json#/$defs/csn" },
+        "version": { "$ref": "common.schema.json#/$defs/semver" },
+        "displayName": { "type": "string", "description": "NON-SEMANTIC." },
+        "description": { "type": "string", "description": "NON-SEMANTIC." },
+        "fingerprint": { "$ref": "common.schema.json#/$defs/fingerprint", "description": "Self-declared Semantic Fingerprint. NON-SEMANTIC: excluded from its own computation." }
+      }
+    },
+    "namespaces": {
+      "type": "array",
+      "description": "Namespaces published by this meta-model.",
+      "items": { "$ref": "common.schema.json#/$defs/csn" }
+    },
+    "bundles": {
+      "type": "array",
+      "description": "Bundles of the meta-model (Composition Hierarchy).",
+      "items": {
+        "type": "object",
+        "required": ["csn"],
+        "additionalProperties": false,
+        "properties": {
+          "csn": { "$ref": "common.schema.json#/$defs/csn" },
+          "layers": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/csn" } },
+          "displayName": { "type": "string", "description": "NON-SEMANTIC." }
+        }
+      }
+    },
+    "imports": {
+      "type": "array",
+      "description": "External standards imported as Semantic Packages.",
+      "items": {
+        "type": "object",
+        "required": ["source", "version"],
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string", "description": "The external standard, e.g. 'schema.org', 'fhir', 'o-net'." },
+          "version": { "$ref": "common.schema.json#/$defs/semverRange" },
+          "namespaces": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/csn" } },
+          "fingerprint": { "$ref": "common.schema.json#/$defs/fingerprint" }
+        }
+      }
+    },
+    "objects": { "type": "array", "items": { "$ref": "object.schema.json" } },
+    "relationships": { "type": "array", "items": { "$ref": "relationship.schema.json" } },
+    "events": { "type": "array", "items": { "$ref": "event.schema.json" } },
+    "contracts": { "type": "array", "items": { "$ref": "contract.schema.json" } },
+    "projections": { "type": "array", "items": { "$ref": "projection.schema.json" } },
+    "conformance": { "$ref": "common.schema.json#/$defs/conformance" }
+  }
+}

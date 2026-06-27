@@ -217,7 +217,20 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
 
 **Start point: WS1 (MUIF).** It unblocks almost everything.
 
-## 6. Definition of "mature"
+## 6. Progress log
+
+- **2026-06-27 — WS1 (MUIF) ✅ delivered.**
+  - `02-architecture/MMAS-Interchange.md` — normative MUIF + canonicalization algorithm.
+  - `schemas/` — JSON Schema 2020-12 for manifest + 5 primitives + common defs.
+  - `tools/mu-fingerprint.ps1` — reference canonicalizer (also seeds WS13).
+  - `examples/minimal-person/` — same model in two serializations, **verified to
+    produce an identical fingerprint** `sha256:a628b2af…b04a639d`.
+  - Cross-linked from `02-architecture/Versioning.md`.
+  - *Next:* WS2 (MUFP protocol) and WS3 (Validation criteria + Requirement IDs).
+
+---
+
+## 7. Definition of "mature"
 
 The maturation pass is complete when:
 

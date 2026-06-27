@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/event.schema.json",
+  "title": "MUIF Event",
+  "description": "An Event: an immutable record of how semantic reality evolves (see 04-core-concepts/Event.md).",
+  "type": "object",
+  "required": ["muifType", "id", "type", "subject", "occurrenceTime", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "muifType": { "const": "Event" },
+    "id": { "$ref": "common.schema.json#/$defs/identifier" },
+    "type": {
+      "type": "string",
+      "enum": ["Lifecycle", "Structural", "Semantic", "Disclosure", "Federation", "Conflict"],
+      "description": "Event category."
+    },
+    "subject": { "$ref": "common.schema.json#/$defs/identifier", "description": "Identifier of the affected Object, Relationship, Projection or Contract." },
+    "occurrenceTime": { "type": "string", "format": "date-time", "description": "When the change happened in reality. SEMANTIC." },
+    "assertionTime": { "type": "string", "format": "date-time", "description": "When the change was recorded. NON-SEMANTIC: excluded from the fingerprint." },
+    "payload": { "type": "object", "description": "Semantic content of the change." },
+    "causality": {
+      "type": "array",
+      "description": "Identifiers of the Events or facts that caused this Event (treated as a set).",
+      "items": { "$ref": "common.schema.json#/$defs/identifier" }
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/provenance" }
+  }
+}
