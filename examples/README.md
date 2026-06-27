@@ -16,8 +16,17 @@
 
 # Purpose
 
-This folder will hold a small number of **minimal, teaching-oriented** examples that
-illustrate the Meta-Universe standards in practice.
+This folder holds a small number of **minimal, teaching-oriented** examples that
+illustrate the Meta-Universe standards in practice. Every example is machine-checked
+(fingerprints round-trip; documents parse and validate).
+
+# Available examples
+
+| Example | Shows |
+|---------|-------|
+| [`minimal-person`](minimal-person/) | The smallest complete MUIF meta-model; one model in two serializations proving the **Semantic Fingerprint** is serialization-independent; a passing **Validation Report**. |
+| [`federation-handshake`](federation-handshake/) | A 10-envelope [MUFP](../03-federation/MUFP-Messages.md) handshake walking the protocol state machine. |
+| [`federation-acme-govtax`](federation-acme-govtax/) | **The golden end-to-end example.** Two sovereign universes with different vocabularies federate over one Person — Identity → Mapping → Contract → Projection → Synchronization → Conflict — with real fingerprints, validation reports and a 17-envelope transcript (data moves only at message 14). |
 
 # Why this folder is intentionally small
 

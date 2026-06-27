@@ -1,0 +1,52 @@
+[
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:001", "type": "Hello", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "sentAt": "2026-06-27T10:00:00Z",
+    "body": { "supportedVersions": { "muc": "^2.0.0", "mmas": ">=2.0.0", "mufp": "^1.0.0" }, "purpose": "tax-filing" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:001", "inReplyTo": "urn:mu:msg:acme:001", "type": "HelloAck", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "sentAt": "2026-06-27T10:00:01Z",
+    "body": { "supportedVersions": { "muc": "2.0.0", "mmas": "2.0.0", "mufp": "1.0.0" }, "capabilities": ["projection-exchange", "synchronization", "identity-binding"] } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:002", "inReplyTo": "urn:mu:msg:gov:001", "type": "CapabilityOffer", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "sentAt": "2026-06-27T10:00:02Z",
+    "body": { "muc": "2.0.0", "mmas": "A4", "mufp": "1.0.0", "federationProfile": "gov.taxFiling" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:002", "inReplyTo": "urn:mu:msg:acme:002", "type": "CapabilityAccept", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "sentAt": "2026-06-27T10:00:03Z",
+    "body": { "agreed": { "muc": "2.0.0", "mmas": "A4", "mufp": "1.0.0", "federationProfile": "gov.taxFiling" }, "callbackUrl": "https://acme.example/mufp/callback" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:003", "inReplyTo": "urn:mu:msg:gov:002", "type": "TrustRequest", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "sentAt": "2026-06-27T10:00:04Z",
+    "body": { "requestedPurpose": "tax-filing", "evidence": [ { "kind": "identity", "value": "did:example:acme" }, { "kind": "governance", "value": "iso-27001-cert" } ] } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:003", "inReplyTo": "urn:mu:msg:acme:003", "type": "TrustResponse", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "sentAt": "2026-06-27T10:00:05Z",
+    "body": { "decision": "accept", "trustVector": { "identity": 0.9, "semantic": 0.8, "governance": 0.7, "contract": 0.8, "operational": 0.6, "historical": 0.5 } } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:004", "inReplyTo": "urn:mu:msg:gov:003", "type": "ContractProposal", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:06Z",
+    "body": { "contract": { "muifType": "Contract", "id": "urn:mu:contract:acme-govtax-001", "kind": "Federation", "purpose": "tax-filing", "parties": ["urn:mu:universe:acme", "urn:mu:universe:gov-tax"], "permissions": ["read:employee.givenName", "read:employee.familyName", "read:employee.taxId"], "restrictions": ["purpose-bound", "no-onward-disclosure", "retain-max-7y"], "terminationConditions": ["employment-ended", "purpose-fulfilled"], "lifecycleState": "Active", "provenance": { "owner": "urn:mu:universe:acme" } } } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:004", "inReplyTo": "urn:mu:msg:acme:004", "type": "ContractAccept", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:07Z",
+    "body": { "contractId": "urn:mu:contract:acme-govtax-001", "contractFingerprint": "sha256:44582ad8112dc79a105b9cec0b4c4016ba86cc044a2aa4b81c8c61c7c3428af0" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:005", "inReplyTo": "urn:mu:msg:gov:004", "type": "SchemaRequest", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:08Z",
+    "body": { "namespaces": ["taxpayer"] } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:005", "inReplyTo": "urn:mu:msg:acme:005", "type": "SchemaResponse", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:09Z",
+    "body": { "schemas": [ { "metaModel": "urn:mu:metamodel:gov.taxpayer", "namespace": "taxpayer" } ], "fingerprints": ["sha256:d51f639eb872de6ea2537fbeeaa302bdea050c871c34d26959448ff11ba37ba6"], "mapping": "urn:mu:mapping:acme-employee-to-gov-taxpayer" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:006", "inReplyTo": "urn:mu:msg:gov:005", "type": "IdentityBindingProposal", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:10Z",
+    "body": { "binding": { "bindingId": "urn:mu:binding:person-acme12345-gov99821", "canonicalIdentity": { "scheme": "urn", "value": "urn:mu:person:9d3f2c1a" }, "localIdentities": [ { "universe": "urn:mu:universe:acme", "id": "employee:12345" }, { "universe": "urn:mu:universe:gov-tax", "id": "taxpayer:99821" } ], "evidence": [ { "kind": "taxId", "value": "matched on employee.taxId = taxpayer.taxIdentifier" } ] } } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:006", "inReplyTo": "urn:mu:msg:acme:006", "type": "IdentityBindingAccept", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:11Z",
+    "body": { "bindingId": "urn:mu:binding:person-acme12345-gov99821" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:007", "inReplyTo": "urn:mu:msg:gov:006", "type": "ProjectionRequest", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:12Z",
+    "body": { "subject": "employee:12345", "purpose": "tax-filing", "contractId": "urn:mu:contract:acme-govtax-001", "profile": "employee.taxFiling" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:008", "type": "ProjectionResponse", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:13Z",
+    "body": { "contractId": "urn:mu:contract:acme-govtax-001", "projection": { "muifType": "Projection", "id": "employee:projection:tax:12345", "subject": "employee:12345", "context": "TaxFiling", "purpose": "tax-filing", "profile": "employee.taxFiling", "fields": ["employee.givenName", "employee.familyName", "employee.taxId"], "contract": "urn:mu:contract:acme-govtax-001" } } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:007", "type": "SyncEvent", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:14Z",
+    "body": { "streamId": "urn:mu:stream:acme-govtax-001", "event": { "muifType": "Event", "id": "urn:mu:event:conflict:001", "type": "Conflict", "subject": "urn:mu:person:9d3f2c1a", "occurrenceTime": "2026-06-27T10:00:14Z", "payload": { "kind": "value-mismatch", "field": "familyName/surname", "acmeValue": "Smith", "govValue": "Smyth", "status": "detected" }, "provenance": { "owner": "urn:mu:universe:gov-tax" } } } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:acme:009", "inReplyTo": "urn:mu:msg:gov:007", "type": "SyncAck", "from": "urn:mu:universe:acme", "to": "urn:mu:universe:gov-tax", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:00:15Z",
+    "body": { "streamId": "urn:mu:stream:acme-govtax-001", "upTo": "urn:mu:event:conflict:001" } },
+
+  { "mufp": { "version": "1.0" }, "messageId": "urn:mu:msg:gov:008", "type": "SyncEvent", "from": "urn:mu:universe:gov-tax", "to": "urn:mu:universe:acme", "federationId": "urn:mu:fed:acme-govtax-001", "sentAt": "2026-06-27T10:05:00Z",
+    "body": { "streamId": "urn:mu:stream:acme-govtax-001", "event": { "muifType": "Event", "id": "urn:mu:event:conflict:001:resolved", "type": "Conflict", "subject": "urn:mu:person:9d3f2c1a", "occurrenceTime": "2026-06-27T10:05:00Z", "causality": ["urn:mu:event:conflict:001"], "payload": { "kind": "value-mismatch", "field": "familyName/surname", "status": "resolved", "decision": "authoritative-source", "authority": "urn:mu:universe:gov-tax", "resolvedValue": "Smyth", "note": "Government record is authoritative for legal surname; the conflict event is preserved in history." }, "provenance": { "owner": "urn:mu:universe:gov-tax" } } } }
+]

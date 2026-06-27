@@ -1,0 +1,14 @@
+{
+  "bindingId": "urn:mu:binding:person-acme12345-gov99821",
+  "version": "1.0.0",
+  "canonicalIdentity": { "scheme": "urn", "value": "urn:mu:person:9d3f2c1a" },
+  "localIdentities": [
+    { "universe": "urn:mu:universe:acme", "id": "employee:12345" },
+    { "universe": "urn:mu:universe:gov-tax", "id": "taxpayer:99821" }
+  ],
+  "evidence": [
+    { "kind": "taxId", "value": "matched on employee.taxId = taxpayer.taxIdentifier" }
+  ],
+  "lifecycleState": "Active",
+  "provenance": { "owner": "urn:mu:universe:gov-tax" }
+}

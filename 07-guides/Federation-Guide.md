@@ -20,6 +20,8 @@ This guide provides practical recommendations for implementing semantic federati
 
 It describes a repeatable implementation process that preserves semantic sovereignty, interoperability, traceability and long-term evolution.
 
+> **Worked example.** Everything in this guide is demonstrated end-to-end in [`examples/federation-acme-govtax`](../examples/federation-acme-govtax/): two universes with different vocabularies federate over one Person — Identity → Mapping → Contract → Projection → Synchronization → Conflict — with real fingerprints, validation reports and a full MUFP transcript.
+
 ---
 
 # 1a. The Federation Sequence — Meaning Before Technology

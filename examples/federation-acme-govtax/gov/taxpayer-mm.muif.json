@@ -1,0 +1,30 @@
+{
+  "muif": { "version": "1.0" },
+  "metaModel": {
+    "id": "urn:mu:metamodel:gov.taxpayer",
+    "csn": "gov.taxpayer",
+    "version": "1.0.0",
+    "displayName": "Government Taxpayer Meta-Model"
+  },
+  "namespaces": ["taxpayer"],
+  "bundles": [
+    { "csn": "taxpayer.core", "layers": ["taxpayer.core.identity"] }
+  ],
+  "objects": [
+    {
+      "muifType": "Object",
+      "id": "taxpayer:Taxpayer",
+      "csn": "taxpayer.taxpayer",
+      "kind": "Entity",
+      "namespace": "taxpayer",
+      "provenance": { "owner": "urn:mu:universe:gov-tax" },
+      "properties": [
+        { "name": "taxpayer.forename", "valueType": "string", "required": true },
+        { "name": "taxpayer.surname", "valueType": "string", "required": true },
+        { "name": "taxpayer.taxIdentifier", "valueType": "string", "required": true },
+        { "name": "taxpayer.residencyStatus", "valueType": "string", "required": false }
+      ]
+    }
+  ],
+  "conformance": { "muc": "2.0: Conformant", "mmas": "A4", "mufp": "Level 2" }
+}

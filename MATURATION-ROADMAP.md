@@ -246,6 +246,18 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
     structurally verified; data moves only at the last message.
   - `MUFP.md` now points to the wire protocol.
   - *Next:* WS4 (golden federation example over two full meta-models).
+- **2026-06-27 — WS4 (golden end-to-end example) ✅ delivered.**
+  - `examples/federation-acme-govtax/` — two sovereign universes (Acme employee
+    MM, Government taxpayer MM) with different vocabularies federate over one
+    Person: **Identity → Mapping → Contract → Projection → Synchronization →
+    Conflict**.
+  - Real fingerprints (acme `0b4965f1…`, gov `d51f639e…`, contract `44582ad8…`)
+    all recomputed and verified; both models pass V0–V4 validation reports.
+  - 17-envelope `transcript.json` — structurally verified; **first knowledge moves
+    at message 14**; conflict detected + resolved with causality preserved.
+  - Threaded into `examples/README.md` and `07-guides/Federation-Guide.md`.
+  - **Phase 1 (v2.1 Critical) is now substantially complete** (WS1–WS4 done;
+    WS5 Security-Model remains).
 
 ---
 

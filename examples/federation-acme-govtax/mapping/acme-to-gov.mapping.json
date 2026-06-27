@@ -1,0 +1,19 @@
+{
+  "mappingId": "urn:mu:mapping:acme-employee-to-gov-taxpayer",
+  "version": "1.0.0",
+  "authority": "urn:mu:universe:gov-tax",
+  "source": {
+    "metaModel": "urn:mu:metamodel:acme.employee",
+    "fingerprint": "sha256:0b4965f1fbdfa47c26d92048d06c1f013846150f4f5fd6c058fde103e4038c40"
+  },
+  "target": {
+    "metaModel": "urn:mu:metamodel:gov.taxpayer",
+    "fingerprint": "sha256:d51f639eb872de6ea2537fbeeaa302bdea050c871c34d26959448ff11ba37ba6"
+  },
+  "mappings": [
+    { "from": "employee.givenName", "to": "taxpayer.forename", "relation": "equivalent" },
+    { "from": "employee.familyName", "to": "taxpayer.surname", "relation": "equivalent" },
+    { "from": "employee.taxId", "to": "taxpayer.taxIdentifier", "relation": "equivalent" }
+  ],
+  "provenance": { "owner": "urn:mu:universe:gov-tax", "authority": "gov-tax semantic mapping authority" }
+}

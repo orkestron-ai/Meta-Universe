@@ -1,0 +1,42 @@
+{
+  "muif": { "version": "1.0" },
+  "metaModel": {
+    "id": "urn:mu:metamodel:acme.employee",
+    "csn": "acme.employee",
+    "version": "1.0.0",
+    "displayName": "Acme Employee Meta-Model"
+  },
+  "namespaces": ["employee"],
+  "bundles": [
+    { "csn": "employee.core", "layers": ["employee.core.identity", "employee.core.compensation"] }
+  ],
+  "objects": [
+    {
+      "muifType": "Object",
+      "id": "employee:Person",
+      "csn": "employee.person",
+      "kind": "Entity",
+      "namespace": "employee",
+      "provenance": { "owner": "urn:mu:universe:acme" },
+      "properties": [
+        { "name": "employee.givenName", "valueType": "string", "required": true },
+        { "name": "employee.familyName", "valueType": "string", "required": true },
+        { "name": "employee.taxId", "valueType": "string", "required": true },
+        { "name": "employee.annualSalary", "valueType": "decimal", "required": false },
+        { "name": "employee.startDate", "valueType": "dateTime", "required": false }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "muifType": "Relationship",
+      "id": "employee:reportsTo:1",
+      "kind": "reportsTo",
+      "source": "employee:Person",
+      "target": "employee:Person",
+      "cardinality": "0..1",
+      "provenance": { "owner": "urn:mu:universe:acme" }
+    }
+  ],
+  "conformance": { "muc": "2.0: Conformant", "mmas": "A4", "mufp": "Level 2" }
+}

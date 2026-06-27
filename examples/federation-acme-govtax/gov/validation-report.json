@@ -1,0 +1,30 @@
+{
+  "reportId": "urn:mu:validation:gov.taxpayer:2026-06-27",
+  "target": {
+    "id": "urn:mu:metamodel:gov.taxpayer",
+    "version": "1.0.0",
+    "fingerprint": "sha256:d51f639eb872de6ea2537fbeeaa302bdea050c871c34d26959448ff11ba37ba6"
+  },
+  "validator": { "id": "urn:mu:validator:reference", "version": "ws4-draft" },
+  "validatedAt": "2026-06-27T00:00:00Z",
+  "highestLevelAchieved": "V4",
+  "levels": [
+    { "level": "V0", "status": "pass", "checks": [
+      { "checkId": "V0-01", "status": "pass", "severity": "error", "enforces": ["MUIF-R02", "MUIF-R03"] },
+      { "checkId": "V0-02", "status": "pass", "severity": "error", "enforces": ["MUIF-R01"] } ] },
+    { "level": "V1", "status": "pass", "checks": [
+      { "checkId": "V1-01", "status": "pass", "severity": "error", "enforces": ["MUIF-R01"] },
+      { "checkId": "V1-02", "status": "pass", "severity": "error", "enforces": ["MUIF-R01"] },
+      { "checkId": "V1-03", "status": "pass", "severity": "warning", "enforces": ["MMAS-CORE"] } ] },
+    { "level": "V2", "status": "pass", "checks": [
+      { "checkId": "V2-01", "status": "pass", "severity": "error", "enforces": ["MUC-R03"] },
+      { "checkId": "V2-03", "status": "pass", "severity": "error", "enforces": ["NAME"] },
+      { "checkId": "V2-05", "status": "pass", "severity": "error", "enforces": ["MUIF-R12", "MUIF-R18"], "message": "Fingerprint recomputed by tools/mu-fingerprint.ps1 matches sha256:d51f639e..." } ] },
+    { "level": "V3", "status": "pass", "checks": [
+      { "checkId": "V3-01", "status": "pass", "severity": "error", "enforces": ["MUC-R03", "MUC-R04"] },
+      { "checkId": "V3-02", "status": "pass", "severity": "error", "enforces": ["MUC-R12", "MUC-R13", "MUC-R14"] } ] },
+    { "level": "V4", "status": "pass", "checks": [
+      { "checkId": "V4-03", "status": "pass", "severity": "error", "enforces": ["MUIF-R12"] } ] }
+  ],
+  "summary": { "errors": 0, "warnings": 0, "info": 0 }
+}

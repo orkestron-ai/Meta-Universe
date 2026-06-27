@@ -1,0 +1,16 @@
+{
+  "muifType": "Contract",
+  "id": "urn:mu:contract:acme-govtax-001",
+  "kind": "Federation",
+  "purpose": "tax-filing",
+  "parties": ["urn:mu:universe:acme", "urn:mu:universe:gov-tax"],
+  "permissions": [
+    "read:employee.givenName",
+    "read:employee.familyName",
+    "read:employee.taxId"
+  ],
+  "restrictions": ["purpose-bound", "no-onward-disclosure", "retain-max-7y"],
+  "terminationConditions": ["employment-ended", "purpose-fulfilled"],
+  "lifecycleState": "Active",
+  "provenance": { "owner": "urn:mu:universe:acme" }
+}
