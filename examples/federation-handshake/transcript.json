@@ -1,0 +1,153 @@
+[
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:acme:001",
+    "type": "Hello",
+    "from": "urn:mu:universe:acme",
+    "to": "urn:mu:universe:gov-tax",
+    "sentAt": "2026-06-27T10:00:00Z",
+    "body": {
+      "supportedVersions": { "muc": "^2.0.0", "mmas": ">=2.0.0", "mufp": "^1.0.0" },
+      "purpose": "tax-filing"
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:gov:001",
+    "inReplyTo": "urn:mu:msg:acme:001",
+    "type": "HelloAck",
+    "from": "urn:mu:universe:gov-tax",
+    "to": "urn:mu:universe:acme",
+    "sentAt": "2026-06-27T10:00:01Z",
+    "body": {
+      "supportedVersions": { "muc": "2.0.0", "mmas": "2.0.0", "mufp": "1.0.0" },
+      "capabilities": ["projection-exchange", "synchronization", "identity-binding"]
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:acme:002",
+    "inReplyTo": "urn:mu:msg:gov:001",
+    "type": "CapabilityOffer",
+    "from": "urn:mu:universe:acme",
+    "to": "urn:mu:universe:gov-tax",
+    "sentAt": "2026-06-27T10:00:02Z",
+    "body": { "muc": "2.0.0", "mmas": "A4", "mufp": "1.0.0", "federationProfile": "gov.taxFiling" }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:gov:002",
+    "inReplyTo": "urn:mu:msg:acme:002",
+    "type": "CapabilityAccept",
+    "from": "urn:mu:universe:gov-tax",
+    "to": "urn:mu:universe:acme",
+    "sentAt": "2026-06-27T10:00:03Z",
+    "body": {
+      "agreed": { "muc": "2.0.0", "mmas": "A4", "mufp": "1.0.0", "federationProfile": "gov.taxFiling" },
+      "callbackUrl": "https://acme.example/mufp/callback"
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:acme:003",
+    "inReplyTo": "urn:mu:msg:gov:002",
+    "type": "TrustRequest",
+    "from": "urn:mu:universe:acme",
+    "to": "urn:mu:universe:gov-tax",
+    "sentAt": "2026-06-27T10:00:04Z",
+    "body": {
+      "requestedPurpose": "tax-filing",
+      "evidence": [
+        { "kind": "identity", "value": "did:example:acme" },
+        { "kind": "governance", "value": "iso-27001-cert" }
+      ]
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:gov:003",
+    "inReplyTo": "urn:mu:msg:acme:003",
+    "type": "TrustResponse",
+    "from": "urn:mu:universe:gov-tax",
+    "to": "urn:mu:universe:acme",
+    "sentAt": "2026-06-27T10:00:05Z",
+    "body": {
+      "decision": "accept",
+      "trustVector": { "identity": 0.9, "semantic": 0.8, "governance": 0.7, "contract": 0.8, "operational": 0.6, "historical": 0.5 }
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:acme:004",
+    "inReplyTo": "urn:mu:msg:gov:003",
+    "type": "ContractProposal",
+    "from": "urn:mu:universe:acme",
+    "to": "urn:mu:universe:gov-tax",
+    "federationId": "urn:mu:fed:acme-govtax-001",
+    "sentAt": "2026-06-27T10:00:06Z",
+    "body": {
+      "contract": {
+        "muifType": "Contract",
+        "id": "urn:mu:contract:acme-govtax-001",
+        "kind": "Federation",
+        "purpose": "tax-filing",
+        "parties": ["urn:mu:universe:acme", "urn:mu:universe:gov-tax"],
+        "permissions": ["read:person.givenName", "read:person.familyName", "read:person.taxId"],
+        "restrictions": ["purpose-bound", "no-onward-disclosure"]
+      }
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:gov:004",
+    "inReplyTo": "urn:mu:msg:acme:004",
+    "type": "ContractAccept",
+    "from": "urn:mu:universe:gov-tax",
+    "to": "urn:mu:universe:acme",
+    "federationId": "urn:mu:fed:acme-govtax-001",
+    "sentAt": "2026-06-27T10:00:07Z",
+    "body": {
+      "contractId": "urn:mu:contract:acme-govtax-001",
+      "contractFingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:acme:005",
+    "inReplyTo": "urn:mu:msg:gov:004",
+    "type": "ProjectionRequest",
+    "from": "urn:mu:universe:acme",
+    "to": "urn:mu:universe:gov-tax",
+    "federationId": "urn:mu:fed:acme-govtax-001",
+    "sentAt": "2026-06-27T10:00:08Z",
+    "body": {
+      "subject": "person:Person",
+      "purpose": "tax-filing",
+      "contractId": "urn:mu:contract:acme-govtax-001",
+      "profile": "person.taxFiling"
+    }
+  },
+  {
+    "mufp": { "version": "1.0" },
+    "messageId": "urn:mu:msg:gov:005",
+    "inReplyTo": "urn:mu:msg:acme:005",
+    "type": "ProjectionResponse",
+    "from": "urn:mu:universe:gov-tax",
+    "to": "urn:mu:universe:acme",
+    "federationId": "urn:mu:fed:acme-govtax-001",
+    "sentAt": "2026-06-27T10:00:09Z",
+    "body": {
+      "contractId": "urn:mu:contract:acme-govtax-001",
+      "projection": {
+        "muifType": "Projection",
+        "id": "person:projection:tax",
+        "subject": "person:Person",
+        "context": "TaxFiling",
+        "purpose": "tax-filing",
+        "profile": "person.taxFiling",
+        "fields": ["person.givenName", "person.familyName", "person.taxId"],
+        "contract": "urn:mu:contract:acme-govtax-001"
+      }
+    }
+  }
+]

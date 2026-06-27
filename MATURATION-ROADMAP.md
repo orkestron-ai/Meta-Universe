@@ -237,6 +237,15 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
   - MUC gained a "Requirement Identifiers" section; `Certification.md` now defines
     assessment as reproducible against the ATPs/levels and the Requirements Index.
   - *Next:* WS2 (MUFP protocol), then WS4 (golden federation example).
+- **2026-06-27 — WS2 (MUFP protocol) ✅ delivered.**
+  - `03-federation/MUFP-Messages.md` (FED-011) — envelope, state machine,
+    22-message catalog, 12-code error taxonomy, version negotiation, revocation,
+    HTTP/JSON binding, minimal-endpoint conformance.
+  - `schemas/mufp-envelope.schema.json` — envelope + conditional message bodies.
+  - `examples/federation-handshake/transcript.json` — 10-envelope handshake,
+    structurally verified; data moves only at the last message.
+  - `MUFP.md` now points to the wire protocol.
+  - *Next:* WS4 (golden federation example over two full meta-models).
 
 ---
 

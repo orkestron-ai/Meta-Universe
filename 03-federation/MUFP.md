@@ -103,6 +103,8 @@ The critical observation is that **data appears only at stage 6**. Stages 1 thro
 
 Implementations MAY optimize, parallelize or revisit stages provided the semantic guarantee holds: no protected knowledge is exchanged before meaning, trust, rules and purpose are agreed. Each stage is served by a dedicated mechanism specified in its own document — see [Federation Lifecycle](Federation-Lifecycle.md) for the full mapping of stages to mechanisms.
 
+The concrete on-the-wire realization of this sequence — the messages, state machine, error taxonomy, version negotiation, revocation and HTTP/JSON binding — is specified in [MUFP Messages](MUFP-Messages.md). That document is what an implementer builds an interoperable endpoint from.
+
 ---
 
 # 7. Discovery

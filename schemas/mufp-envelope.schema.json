@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/mufp-envelope.schema.json",
+  "title": "MUFP Envelope",
+  "description": "Every MUFP message is an instance of this envelope (see 03-federation/MUFP-Messages.md).",
+  "type": "object",
+  "required": ["mufp", "messageId", "type", "from", "to", "sentAt", "body"],
+  "additionalProperties": false,
+  "properties": {
+    "mufp": {
+      "type": "object",
+      "required": ["version"],
+      "additionalProperties": false,
+      "properties": { "version": { "const": "1.0" } }
+    },
+    "messageId": { "$ref": "common.schema.json#/$defs/identifier" },
+    "inReplyTo": { "$ref": "common.schema.json#/$defs/identifier" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Hello", "HelloAck",
+        "CapabilityOffer", "CapabilityAccept",
+        "TrustRequest", "TrustResponse",
+        "ContractProposal", "ContractAccept", "ContractReject",
+        "SchemaRequest", "SchemaResponse",
+        "ProjectionRequest", "ProjectionResponse",
+        "SyncEvent", "SyncAck",
+        "IdentityBindingProposal", "IdentityBindingAccept",
+        "Suspend", "Resume", "Terminate",
+        "Revoke", "Error"
+      ]
+    },
+    "from": { "$ref": "common.schema.json#/$defs/identifier" },
+    "to": { "$ref": "common.schema.json#/$defs/identifier" },
+    "federationId": { "$ref": "common.schema.json#/$defs/identifier" },
+    "sentAt": { "type": "string", "format": "date-time" },
+    "body": { "type": "object" },
+    "signature": {
+      "type": "object",
+      "required": ["alg", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "alg": { "type": "string", "description": "Signature algorithm, e.g. ed25519. Defined by the Security-Model." },
+        "value": { "type": "string", "description": "Detached signature over the canonical envelope (signature removed)." }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "Error" } } },
+      "then": {
+        "properties": {
+          "body": {
+            "type": "object",
+            "required": ["code", "message", "retriable"],
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "MUFP-E-VERSION-UNSUPPORTED", "MUFP-E-CAPABILITY-MISMATCH",
+                  "MUFP-E-TRUST-DENIED", "MUFP-E-CONTRACT-REJECTED",
+                  "MUFP-E-SCHEMA-UNAVAILABLE", "MUFP-E-DISCLOSURE-DENIED",
+                  "MUFP-E-FINGERPRINT-MISMATCH", "MUFP-E-IDENTITY-UNRESOLVED",
+                  "MUFP-E-REVOKED", "MUFP-E-STATE",
+                  "MUFP-E-RATE-LIMITED", "MUFP-E-INTERNAL"
+                ]
+              },
+              "requirement": { "type": "string" },
+              "message": { "type": "string" },
+              "retriable": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "Hello" } } },
+      "then": {
+        "properties": {
+          "body": {
+            "type": "object",
+            "required": ["supportedVersions", "purpose"],
+            "properties": {
+              "supportedVersions": {
+                "type": "object",
+                "properties": {
+                  "muc": { "$ref": "common.schema.json#/$defs/semverRange" },
+                  "mmas": { "$ref": "common.schema.json#/$defs/semverRange" },
+                  "mufp": { "$ref": "common.schema.json#/$defs/semverRange" }
+                }
+              },
+              "purpose": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "ProjectionRequest" } } },
+      "then": {
+        "properties": {
+          "body": {
+            "type": "object",
+            "required": ["subject", "purpose", "contractId"],
+            "properties": {
+              "subject": { "$ref": "common.schema.json#/$defs/identifier" },
+              "purpose": { "type": "string", "minLength": 1 },
+              "contractId": { "$ref": "common.schema.json#/$defs/identifier" },
+              "profile": { "$ref": "common.schema.json#/$defs/csn" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "type": { "const": "TrustResponse" } } },
+      "then": {
+        "properties": {
+          "body": {
+            "type": "object",
+            "required": ["decision"],
+            "properties": {
+              "decision": { "type": "string", "enum": ["accept", "deny"] },
+              "trustVector": {
+                "type": "object",
+                "description": "Per-dimension trust (see Trust-Model).",
+                "properties": {
+                  "identity": { "type": "number" },
+                  "semantic": { "type": "number" },
+                  "governance": { "type": "number" },
+                  "contract": { "type": "number" },
+                  "operational": { "type": "number" },
+                  "historical": { "type": "number" }
+                }
+              },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
