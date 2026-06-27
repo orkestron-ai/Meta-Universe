@@ -8,7 +8,7 @@
 **Version:** 2.0 (Draft)  
 **Status:** Working Draft  
 **Normative References:** MUC, MMAS, MUFP  
-**Informative References:** Identity-Binding.md, Synchronization.md  
+**Informative References:** Identity-Binding.md, Synchronization.md, [Meta-Model-Composition](../02-architecture/Meta-Model-Composition.md)  
 **Copyright:** © Orkestron.AI  
 **License:** Apache-2.0
 

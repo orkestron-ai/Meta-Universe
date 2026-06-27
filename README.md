@@ -171,7 +171,7 @@ Meta-Universe **unifies** rather than **replaces**. It is a layer that lets thes
 | FHIR | imported as a domain (healthcare) meta-model |
 | ArchiMate | imported as enterprise-architecture semantics |
 
-External standards are imported as versioned **[Semantic Packages](02-architecture/Extension-Model.md)** and aligned through **[Semantic Mappings](03-federation/Semantic-Mapping.md)**.
+External standards are imported as versioned **[Semantic Packages](02-architecture/Extension-Model.md)**, aligned through **[Semantic Mappings](03-federation/Semantic-Mapping.md)**, and composed via **[Meta-Model Composition](02-architecture/Meta-Model-Composition.md)** — the rule for when a concept is a field, a nested model, or a reference — using the **[Connector Catalogue](06-ecosystem/Connector-Catalogue.md)** as the shared set of joints between the **[1180 catalogued standards](06-ecosystem/External-Models-Registry.md)**.
 
 ---
 

@@ -26,6 +26,11 @@ extend or map to.
 It is a reference catalogue, not a normative list. Inclusion is not endorsement,
 and absence is not rejection.
 
+How these standards **connect** — which should be embedded, referenced or mixed in,
+and when a concept should be a field rather than a nested model — is governed by
+[Meta-Model-Composition](../02-architecture/Meta-Model-Composition.md) and the
+curated [Connector-Catalogue](../06-ecosystem/Connector-Catalogue.md).
+
 ---
 
 # 2. Field legend

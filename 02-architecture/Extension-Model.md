@@ -8,7 +8,7 @@
 **Version:** 2.0 (Draft)  
 **Status:** Working Draft  
 **Normative References:** Meta-Universe Constitution (MUC), MMAS-Core, MMAS-Package  
-**Informative References:** Versioning, Naming-Conventions  
+**Informative References:** Versioning, Naming-Conventions, [Meta-Model-Composition](Meta-Model-Composition.md)  
 **Copyright:** © Orkestron.AI  
 **License:** Apache-2.0
 
@@ -41,6 +41,8 @@ This specification applies to:
 Meta-Universe SHALL prefer **extension over duplication**.
 
 Existing semantic standards SHOULD be imported whenever they already describe the required concept with sufficient precision.
+
+Whereas this document governs *importing and extending* an external model, the structural question of whether a concept should be a literal field, a nested (embedded) Meta-Model, or a reference to a separately governed model is specified in [Meta-Model-Composition](Meta-Model-Composition.md).
 
 ---
 
