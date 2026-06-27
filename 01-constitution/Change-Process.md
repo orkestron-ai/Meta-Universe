@@ -115,6 +115,8 @@ Breaking changes SHALL require explicit justification.
 
 The Editorial / Corrective / Evolutionary / Breaking axis in Section 6 describes the **impact** of a change. It SHOULD be complemented by a second axis describing the **semantic subject** of the change — *what kind of meaning is affected*. This second axis is the **Semantic Change Classification**.
 
+A change to the normative rule base SHALL additionally pass the pre-merge [Policy Consistency Check](../02-architecture/Policy-Consistency.md): a change that would make the rule set logically unsatisfiable SHALL NOT be merged.
+
 Every Change Request SHOULD declare one or more semantic change types:
 
 - **Model-structure change** — alters the structure of the meta-model (Objects, Relationships, Events, the shape of definitions).

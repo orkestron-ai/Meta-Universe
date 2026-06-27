@@ -200,6 +200,47 @@ Tool-calling schemas, structured-output constraints, RAG over Projections+Events
 a worked Executable Semantic Contract in an agent loop; multilingual model for
 namespaces/labels/docs. **Depends on:** WS1, WS4.
 
+### Phase 4 — Refinements from external review (Gemini)
+
+A third review (Gemini) was assessed. Much of it was already covered — the
+critique partly conflated Meta-Universe (this federation standard) with AISMM/FCD
+(a domain meta-model + dev methodology built *on top* of it). Several of its
+headline recommendations already exist here: **Federated/Mesh** is the standard's
+core ([Federation of Registries](06-ecosystem/Registered-Meta-Models.md), MUFP,
+Namespace publication); **Temporal / time-travel reasoning** is
+[Event → Semantic Timeline](04-core-concepts/Event.md); **graph-poisoning as
+attack surface** is the [Security Model](03-federation/Security-Model.md). The
+genuinely net-new items are captured below.
+
+#### WS19 — Virtual Projections & Hot/Cold Descriptive Facts  · Source: Gemini 2.2 / 3.1
+Distinguish *cold* descriptive facts (schema, API, dependencies) from *hot* facts
+(metrics, runtime state). Hot facts attach as **Virtual Stream Views** — live,
+contract-governed projections an agent reads on the fly without mutating the
+model. **Depends on:** WS1 (Projection/Event/Synchronization).
+
+#### WS20 — Policy Consistency, Precedence & Deadlock Handling  · Source: Gemini 2.3 + 2.4
+A **pre-merge Policy Consistency Check** (logical non-contradiction of normative
+rules) before changes enter the canon; explicit rule **precedence/weights**; and
+**deadlock detection** with mandatory human-in-the-loop escalation. Realizes the
+"AI Reasoning Validation" arm of SVF. **Depends on:** WS3 (Validation), Change-Process.
+
+#### WS21 — Outcome Drift Detection  · Source: Gemini 3.1
+A "ghost-agent" audit comparing declared *purpose/hypothesis* (Model Canon)
+against observed *outcomes* (descriptive metrics): code can be valid, tests green,
+yet the business goal unmet → flag a semantic-outcome drift. Extends V5 runtime
+validation. **Depends on:** WS3, WS19.
+
+#### WS22 — Simulated Sandbox Projections  · Source: Gemini 3.3
+A semantic **what-if**: simulate a proposed change in an isolated projected layer
+(a digital shadow), run synthetic load, assess side effects across the model
+*before* proposing it — without mutating canonical state. **Depends on:** WS1, WS20.
+
+#### WS23 — Zero-Knowledge Policy Attestation  · Source: Gemini 3.4
+For B2B federation, let one Universe **prove** its code/actions conform to agreed
+security/compliance policies **without revealing** its graph or logic, using
+zero-knowledge proofs and Verifiable Credentials. **Depends on:** WS5 (Security),
+WS17 (DID/VC).
+
 ---
 
 ## 5. Critical path & execution order
@@ -276,6 +317,18 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
     Semantic-Coherence-Score (ECO-006), Decentralized-Registry (ECO-007), AI-Integration-Patterns (GUIDE-009).
   - Repo: 77 documents, 1175 catalogued requirements, 5 reference tools, 3 test+example
     suites — all links/IDs clean, test kit green.
+- **2026-06-27 — Phase 4 (Gemini net-new) ✅ delivered.**
+  - **WS19** `04-core-concepts/Virtual-Projection.md` (CORE-012): hot/cold facts +
+    Virtual Stream Views (no write amplification).
+  - **WS20** `02-architecture/Policy-Consistency.md` (ARCH-014): pre-merge
+    consistency check, rule precedence, deadlock + human-in-loop; wired into
+    Change-Process and Validation V3.
+  - **WS21** Validation §9a **Outcome Drift Detection** (purpose vs observed metric).
+  - **WS22** `02-architecture/Simulation-Sandbox.md` (ARCH-015): semantic what-if
+    before applying.
+  - **WS23** `03-federation/Zero-Knowledge-Attestation.md` (FED-014): prove policy
+    conformance without revealing the model.
+  - Repo now: **81 documents, 1218 requirements**; links/IDs clean, kit green.
 
 ---
 

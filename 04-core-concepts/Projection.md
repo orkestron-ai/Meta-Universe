@@ -276,6 +276,8 @@ A Projection SHALL NEVER become the semantic authority over its source Meta-Obje
 
 The five-primitive framing anticipates a future **Projection Profile catalog** of reusable, federatable projection definitions (Public, HR, Finance, Security, AI Agent, Partner and others), each binding included and hidden concepts, transformation rules and a governing Semantic Contract template. Such a catalog would let Universes publish and import standardized projections the way they import Namespaces, making "federation without loss of sovereignty" a turnkey capability rather than a bespoke arrangement. This direction is anticipated but not yet normative.
 
+For projections whose content is *computed live from a source* rather than stored — runtime metrics and other volatile facts — see [Virtual Projection](../04-core-concepts/Virtual-Projection.md), which defines hot/cold descriptive facts and Virtual Stream Views.
+
 ---
 
 # Final Statement

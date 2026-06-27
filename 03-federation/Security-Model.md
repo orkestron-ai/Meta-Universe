@@ -214,7 +214,8 @@ A federation implementation conforms to this model when it:
 - A **cryptographic profile** (signature suites, key formats, DID methods) — to
   be co-developed with the [Decentralized Registry](../06-ecosystem/Decentralized-Registry.md).
 - **Confidential computation** patterns so a Projection can be computed over data
-  that is never disclosed in clear.
+  that is never disclosed in clear, and [Zero-Knowledge Policy Attestation](../03-federation/Zero-Knowledge-Attestation.md)
+  so a Universe can prove policy conformance without revealing its model.
 - A **security conformance test suite** within the Semantic Test Kit (roadmap WS6).
 
 ---

@@ -185,6 +185,30 @@ A change that lowers a model's achieved validation level SHALL be treated as a s
 
 ---
 
+# 9a. Outcome Drift Detection
+
+Levels V0–V4 verify that a model is *correct*. They do not verify that it is still
+*achieving its purpose*. A model can be perfectly valid — every check green — while
+the reality it describes drifts away from the intent it was built for.
+
+**Outcome Drift** is the divergence between a declared purpose or hypothesis (held
+in the model, e.g. an Object's stated intent or a business hypothesis) and the
+observed outcome (a [hot descriptive fact](../04-core-concepts/Virtual-Projection.md)
+read through a Virtual Projection). It is detected by a background audit — a
+"ghost" auditor — that continuously compares the two:
+
+> *The code is valid, the tests are green, but the metric the change was made to
+> improve is falling.* → raise an Outcome Drift signal: technically conformant,
+> purpose unmet; the model's hypothesis SHOULD be revisited.
+
+Outcome Drift detection is part of optional **V5 (Runtime)** validation. It SHALL
+NOT block structural conformance (a drifting model is still valid), but a detected
+drift SHOULD be recorded as an [Event](../04-core-concepts/Event.md) and surfaced
+to the owner. It connects the [Provenance Graph](../02-architecture/Provenance-Graph.md)
+(*which intent does this serve?*) to live outcomes (*is that intent being met?*).
+
+---
+
 # 10. Relationship to Conformance and Certification
 
 Validation, Conformance and Certification are distinct:
