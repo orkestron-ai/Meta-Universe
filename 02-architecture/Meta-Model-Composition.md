@@ -237,7 +237,10 @@ To make composition predictable at ecosystem scale, every external model in the
 [Registry](../06-ecosystem/External-Models-Registry.md) can be assigned a
 **compositional role** that predicts how other models should link to it. The
 [Connector-Catalogue](../06-ecosystem/Connector-Catalogue.md) applies these roles to
-the foundational connectors.
+the foundational connectors, and all 1180 catalogued standards carry a role and a
+default link type in
+[`external-models.csv`](../06-ecosystem/external-models.csv) (distribution in
+[External-Models-Registry §3a](../06-ecosystem/External-Models-Registry.md)).
 
 | Role | Description | Default link | Examples |
 |------|-------------|--------------|----------|

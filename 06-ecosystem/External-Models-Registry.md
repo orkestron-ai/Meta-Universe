@@ -49,6 +49,8 @@ curated [Connector-Catalogue](../06-ecosystem/Connector-Catalogue.md).
 | **Namespace / URI** | Canonical URI prefix or identifier scheme, where one exists. |
 | **Year** | First published / latest (where known). |
 | **Notes** | One short clause; flags strong **Semantic-Package import candidates** for Meta-Universe. |
+| **Compositional Role** | *(CSV only)* The standard's role in composition — R1–R8 — per [Meta-Model-Composition §7](../02-architecture/Meta-Model-Composition.md). See §3a. |
+| **Default Link Type** | *(CSV only)* The recommended way to link to it — EMBED · REFERENCE · MIX-IN · COMPOSE · ALIGN · EXTEND · N/A. See §3a. |
 
 ---
 
@@ -102,6 +104,43 @@ International and others) for additional meta-models not yet captured.
 | | **Total** | **1180** |
 
 A machine-readable copy is provided as [`external-models.csv`](../06-ecosystem/external-models.csv).
+
+---
+
+# 3a. Compositional roles
+
+Every one of the 1180 standards is also classified by its **compositional role** —
+how other Meta-Models should connect to it — under the rubric of
+[Meta-Model-Composition](../02-architecture/Meta-Model-Composition.md). The role and
+its default link type are carried as two extra columns in
+[`external-models.csv`](../06-ecosystem/external-models.csv) (they are omitted from
+the per-row table below to keep it readable). The curated foundational connectors are
+detailed in the [Connector-Catalogue](../06-ecosystem/Connector-Catalogue.md).
+
+| Role | Meaning | Default link | Count |
+|------|---------|--------------|------:|
+| R1 | Foundational Value-Object | EMBED | 7 |
+| R2 | Reference Data / Code List / Classification | REFERENCE | 138 |
+| R3 | Identifier Scheme | REFERENCE | 66 |
+| R4 | Entity Model | REFERENCE | 118 |
+| R5 | Cross-cutting Facet | MIX-IN | 56 |
+| R6 | Aggregate / Document / Message | COMPOSE | 274 |
+| R7 | Upper Ontology / Foundation / Modeling Substrate | ALIGN | 54 |
+| R8 | Infrastructure / Format / Protocol / Tooling | N/A *(or EXTEND for schema languages)* | 467 |
+| | **Total** | | **1180** |
+
+By link type: REFERENCE 322 · COMPOSE 274 · N/A 381 · EXTEND 86 · MIX-IN 56 ·
+ALIGN 54 · EMBED 7. The classification is informative guidance, produced by a
+verified multi-agent pass; a standard MAY legitimately be linked differently in a
+justified context.
+
+The distribution is itself a finding: genuine **value-objects to embed are rare**
+(7) — most reusable structure is concentrated in the curated connectors — while the
+bulk of the catalogue is **infrastructure** to express or move data (R8, 467) and
+**documents/messages** that compose other models (R6, 274). In other words, most
+standards are not things you nest; they are things you *reference*, *compose with*,
+or *speak* — which is exactly why a small set of embed/reference connectors does so
+much of the integration work.
 
 ---
 
