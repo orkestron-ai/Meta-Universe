@@ -4,7 +4,7 @@ specification: Meta-Universe
 version: "2.0"
 status: "Working Draft"
 license: Apache-2.0
-documentCount: 81
+documentCount: 82
 documents:
   - id: MU-V2-ARCH-001
     title: "Meta-Model Architecture Standard - Core Architecture"
@@ -206,6 +206,11 @@ documents:
     class: Informative
     status: "Working Draft"
     path: 06-ecosystem/Decentralized-Registry.md
+  - id: MU-V2-ECO-008
+    title: "Registry of External Meta-Models, Standards and Vocabularies"
+    class: Informative
+    status: "Working Draft"
+    path: 06-ecosystem/External-Models-Registry.md
   - id: MU-V2-EX-000
     title: "Examples - Policy and Plan"
     class: Informative
