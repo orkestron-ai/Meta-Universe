@@ -258,6 +258,24 @@ Phase 3 (WS13–18) follows once Phase 1–2 artifacts exist.
   - Threaded into `examples/README.md` and `07-guides/Federation-Guide.md`.
   - **Phase 1 (v2.1 Critical) is now substantially complete** (WS1–WS4 done;
     WS5 Security-Model remains).
+- **2026-06-27 — WS5–WS18 ✅ delivered (Phases 1–3 substantially complete).**
+  - **WS5** `03-federation/Security-Model.md` (FED-012): threat model T1–T10,
+    Trust Vector computation, envelope signing/replay, revocation propagation, privacy/PII.
+  - **WS8** CSN ABNF grammar + identifier scheme in Naming-Conventions.
+  - **WS13** `tools/mu-validate.ps1` — reference validator (V0–V2 ATPs → report).
+  - **WS6** `tests/` Semantic Test Kit — 7 fixtures, `run-tests.ps1` (ALL PASS) + golden report.
+  - **WS9** `03-federation/Discovery.md` (FED-013) + `schemas/discovery.schema.json`
+    + `/.well-known` example; `tools/mu-spec-index.ps1` → `spec-index.yaml` (77 docs);
+    `AGENTS.md` + `llms.txt`.
+  - **WS7** `examples/interop/` (Schema.org/FHIR/FOAF + Object→RDF/OWL).
+  - **WS11** `assets/` Mermaid diagram set + `05/MUDL.md` (REFARCH-010).
+  - **WS10** Architecture M0–M4 reconciliation; `STATUS.md` + README banner.
+  - **WS12** `GOVERNANCE.md` (bodies, IPR/patent, naming decision), `CONTRIBUTING.md`,
+    `SECURITY.md`, `CODE_OF_CONDUCT.md`, `.github/` templates, `02-architecture/Core-Profile.md` (ARCH-013).
+  - **WS14–18** SMS (ARCH-010), Provenance-Graph (ARCH-011), Internationalization (ARCH-012),
+    Semantic-Coherence-Score (ECO-006), Decentralized-Registry (ECO-007), AI-Integration-Patterns (GUIDE-009).
+  - Repo: 77 documents, 1175 catalogued requirements, 5 reference tools, 3 test+example
+    suites — all links/IDs clean, test kit green.
 
 ---
 
