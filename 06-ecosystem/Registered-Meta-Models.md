@@ -24,7 +24,7 @@ Registration promotes interoperability, reuse and consistent governance. It does
 
 Registration is an act of *discovery*, not of storage: a registered entry is a reference to an authoritative source, never a copy of it.
 
-For the broad catalogue of **external** standards, ontologies and vocabularies that a Meta-Model may import or map to (Schema.org, RDF/OWL, FHIR, ISO 20022, ESCO and ~950 others across 37 domains), see the [External Models Registry](../06-ecosystem/External-Models-Registry.md).
+For the broad catalogue of **external** standards, ontologies and vocabularies that a Meta-Model may import or map to (Schema.org, RDF/OWL, FHIR, ISO 20022, ESCO and ~1180 others across 37 domains), see the [External Models Registry](../06-ecosystem/External-Models-Registry.md).
 
 ---
 
