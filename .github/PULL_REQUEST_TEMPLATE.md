@@ -20,7 +20,7 @@
 
 - [ ] English only; Standard Header used; flat `#` headings.
 - [ ] RFC 2119 keywords only in Normative documents.
-- [ ] `pwsh tests/run-tests.ps1` passes.
+- [ ] The Semantic Test Kit passes (see [`tests/`](../tests/)).
 - [ ] Regenerated `REQUIREMENTS-INDEX.md` (if normative text changed).
 - [ ] Regenerated `spec-index.yaml` (if a document was added/renamed).
 - [ ] JSON valid; fingerprints/validation re-checked for changed models.

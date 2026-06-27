@@ -33,8 +33,8 @@ traceability. It is a specification, not a runtime.
 | `spec-index.yaml` | Enumerate documents and their status. |
 | `schemas/*.schema.json` | Validate MUIF models, MUFP envelopes, discovery and validation reports (JSON Schema 2020-12). |
 | `REQUIREMENTS-INDEX.md` | Address individual normative requirements by ID. |
-| `tools/mu-fingerprint.ps1` | Compute the reproducible Semantic Fingerprint of a model. |
-| `tools/mu-validate.ps1` | Validate a MUIF model against the V0–V2 checks. |
+| `mu-fingerprint` (see `tools/`) | Compute the reproducible Semantic Fingerprint of a model. |
+| `mu-validate` (see `tools/`) | Validate a MUIF model against the V0–V2 checks. |
 | `/.well-known/meta-universe.json` | A Universe's discovery document (see `examples/well-known/`). |
 
 ## Worked examples

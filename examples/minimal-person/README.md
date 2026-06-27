@@ -19,9 +19,9 @@ Semantic Fingerprint. This demonstrates that the fingerprint is
 *serialization-independent*: it depends only on semantic content, not on key
 order, whitespace, set-array order, or non-semantic metadata.
 
-```bash
-pwsh ../../tools/mu-fingerprint.ps1 person.muif.json
-pwsh ../../tools/mu-fingerprint.ps1 person.variant.json
+```text
+mu-fingerprint person.muif.json
+mu-fingerprint person.variant.json
 # both print:
 # sha256:a628b2afb96dc673f7e2f9161569e573fc70892d10a6997fad7aaa14b04a639d
 ```

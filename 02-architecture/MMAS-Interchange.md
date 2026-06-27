@@ -152,12 +152,11 @@ extra non-semantic fields). Both produce the identical fingerprint:
 sha256:a628b2afb96dc673f7e2f9161569e573fc70892d10a6997fad7aaa14b04a639d
 ```
 
-This is verified by the reference implementation
-[`/tools/mu-fingerprint.ps1`](../tools/mu-fingerprint.ps1):
+This is verified by the reference tool [`mu-fingerprint`](../tools/):
 
-```bash
-pwsh tools/mu-fingerprint.ps1 examples/minimal-person/person.muif.json
-pwsh tools/mu-fingerprint.ps1 examples/minimal-person/person.variant.json
+```text
+mu-fingerprint examples/minimal-person/person.muif.json
+mu-fingerprint examples/minimal-person/person.variant.json
 # → identical sha256:a628b2af...b04a639d
 ```
 

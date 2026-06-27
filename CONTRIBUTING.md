@@ -34,17 +34,15 @@ A CR to a Normative document is reviewed by the owning body (see
 
 ## Before you open a PR
 
-Run the local checks (PowerShell; see [`tools/`](tools/) and [`tests/`](tests/)):
+Run the local checks with the reference tools (see [`tools/`](tools/) and
+[`tests/`](tests/) for how to invoke them):
 
-```bash
-pwsh tests/run-tests.ps1                 # Semantic Test Kit must pass
-pwsh tools/mu-requirements.ps1 > REQUIREMENTS-INDEX.md   # if you changed normative text
-pwsh tools/mu-spec-index.ps1   > spec-index.yaml         # if you added/renamed a document
-```
+- **`mu-test`** — the Semantic Test Kit must pass.
+- **`mu-requirements`** — regenerate `REQUIREMENTS-INDEX.md` if you changed normative text.
+- **`mu-spec-index`** — regenerate `spec-index.yaml` if you added or renamed a document.
 
-If you changed a model, confirm its fingerprint with
-`pwsh tools/mu-fingerprint.ps1 <file>` and validate it with
-`pwsh tools/mu-validate.ps1 <file>`.
+If you changed a model, confirm its fingerprint with **`mu-fingerprint <file>`**
+and validate it with **`mu-validate <file>`**.
 
 ## Developer Certificate of Origin
 

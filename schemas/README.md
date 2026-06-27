@@ -36,4 +36,4 @@ Properties marked **NON-SEMANTIC** in the schema descriptions
 (`displayName`, `description`, `assertedAt`, `metaModel.fingerprint`, …) are
 excluded from the **Semantic Fingerprint** computation. See the canonicalization
 algorithm in [MMAS-Interchange](../02-architecture/MMAS-Interchange.md) and the
-reference implementation in [../tools/mu-fingerprint.ps1](../tools/mu-fingerprint.ps1).
+reference tool `mu-fingerprint` (see [../tools/](../tools/)).

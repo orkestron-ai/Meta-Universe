@@ -19,7 +19,7 @@
     { "level": "V2", "status": "pass", "checks": [
       { "checkId": "V2-01", "status": "pass", "severity": "error", "enforces": ["MUC-R03"] },
       { "checkId": "V2-03", "status": "pass", "severity": "error", "enforces": ["NAME"] },
-      { "checkId": "V2-05", "status": "pass", "severity": "error", "enforces": ["MUIF-R12", "MUIF-R18"], "message": "Fingerprint recomputed by tools/mu-fingerprint.ps1 matches sha256:d51f639e..." } ] },
+      { "checkId": "V2-05", "status": "pass", "severity": "error", "enforces": ["MUIF-R12", "MUIF-R18"], "message": "Fingerprint recomputed by the reference tool (mu-fingerprint) matches sha256:d51f639e..." } ] },
     { "level": "V3", "status": "pass", "checks": [
       { "checkId": "V3-01", "status": "pass", "severity": "error", "enforces": ["MUC-R03", "MUC-R04"] },
       { "checkId": "V3-02", "status": "pass", "severity": "error", "enforces": ["MUC-R12", "MUC-R13", "MUC-R14"] } ] },

@@ -7,10 +7,13 @@ Procedure** ([Validation](../02-architecture/Validation.md)) it is designed to b
 
 ## Run
 
-```bash
-pwsh tests/run-tests.ps1
+```text
+mu-test
 # ALL 7 TESTS PASSED
 ```
+
+`mu-test` is the logical command for the Semantic Test Kit; see [`../tools/`](../tools/)
+for how the reference tools are invoked.
 
 ## Fixtures
 

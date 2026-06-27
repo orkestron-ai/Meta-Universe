@@ -86,8 +86,8 @@ Meta-Universe Core conformant
   Core Federation: yes (MUFP minimal endpoint)
 ```
 
-Such a claim is verifiable with the reference tools (`tools/mu-validate.ps1`) and
-the [Semantic Test Kit](../tests/).
+Such a claim is verifiable with the reference tool `mu-validate` and the
+[Semantic Test Kit](../tests/).
 
 ---
 
