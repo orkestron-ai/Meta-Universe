@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta-universe.org/schemas/2.0/discovery.schema.json",
+  "title": "Meta-Universe Discovery Document",
+  "description": "Public metadata a Universe publishes at /.well-known/meta-universe.json (see 03-federation/Discovery.md).",
+  "type": "object",
+  "required": ["metaUniverse", "universe", "conformance", "supportedVersions", "endpoints"],
+  "additionalProperties": false,
+  "properties": {
+    "metaUniverse": {
+      "type": "object",
+      "required": ["version"],
+      "additionalProperties": false,
+      "properties": { "version": { "const": "2.0" } }
+    },
+    "universe": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/identifier" },
+        "displayName": { "type": "string" },
+        "did": { "type": "string", "description": "Optional Decentralized Identifier." }
+      }
+    },
+    "conformance": { "$ref": "common.schema.json#/$defs/conformance" },
+    "supportedVersions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "muc": { "$ref": "common.schema.json#/$defs/semverRange" },
+        "mmas": { "$ref": "common.schema.json#/$defs/semverRange" },
+        "mufp": { "$ref": "common.schema.json#/$defs/semverRange" }
+      }
+    },
+    "capabilities": { "type": "array", "items": { "type": "string" } },
+    "endpoints": {
+      "type": "object",
+      "required": ["mufp"],
+      "additionalProperties": false,
+      "properties": { "mufp": { "type": "string", "format": "uri" } }
+    },
+    "publicSchemas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["namespace", "fingerprint"],
+        "additionalProperties": false,
+        "properties": {
+          "namespace": { "$ref": "common.schema.json#/$defs/csn" },
+          "fingerprint": { "$ref": "common.schema.json#/$defs/fingerprint" },
+          "href": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "federationProfiles": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/csn" } },
+    "registries": { "type": "array", "items": { "type": "string", "format": "uri" } }
+  }
+}

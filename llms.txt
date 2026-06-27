@@ -1,0 +1,39 @@
+# Meta-Universe
+
+> Open standards for federated semantic systems: how independent universes of meaning describe reality, build meta-models (MMAS), and federate knowledge (MUFP) under a shared constitution (MUC) — preserving identity, context, ownership, trust and traceability. This is a specification, licensed Apache-2.0.
+
+For automated ingestion, start with [AGENTS.md](AGENTS.md) and the machine-readable [spec-index.yaml](spec-index.yaml).
+
+## Start here
+
+- [README](README.md): project overview and the standards stack
+- [Vision](00-foundation/Vision.md): why Meta-Universe exists (+ the Manifesto)
+- [Terminology](00-foundation/Terminology.md): the normative vocabulary
+- [Glossary](00-foundation/Glossary.md): plain-language explanations
+- [FAQ](00-foundation/FAQ.md): common first questions
+
+## Normative core
+
+- [Meta-Universe Constitution (MUC)](01-constitution/Meta-Universe-Constitution.md): the fundamental laws
+- [MMAS-Core](02-architecture/MMAS-Core.md): meta-model architecture
+- [MMAS-Interchange (MUIF)](02-architecture/MMAS-Interchange.md): serialization + Semantic Fingerprint
+- [Validation](02-architecture/Validation.md): the V0–V5 conformance levels
+- [MUFP](03-federation/MUFP.md): the federation protocol
+- [MUFP-Messages](03-federation/MUFP-Messages.md): the wire protocol
+- [Security-Model](03-federation/Security-Model.md): threat model and protections
+
+## Core concepts
+
+- [Object](04-core-concepts/Object.md), [Relationship](04-core-concepts/Relationship.md), [Event](04-core-concepts/Event.md), [Contract](04-core-concepts/Contract.md), [Projection](04-core-concepts/Projection.md), [Context](04-core-concepts/Context.md)
+
+## Machine-readable
+
+- [spec-index.yaml](spec-index.yaml): index of all documents
+- [REQUIREMENTS-INDEX.md](REQUIREMENTS-INDEX.md): every normative requirement, by ID
+- [schemas/](schemas/): JSON Schemas for models, messages, discovery and reports
+
+## Guides
+
+- [Getting-Started](07-guides/Getting-Started.md)
+- [Federation-Guide](07-guides/Federation-Guide.md)
+- [AI-Agent-Guide](07-guides/AI-Agent-Guide.md) and [AI-Integration-Patterns](07-guides/AI-Integration-Patterns.md)

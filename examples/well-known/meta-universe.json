@@ -1,0 +1,21 @@
+{
+  "metaUniverse": { "version": "2.0" },
+  "universe": {
+    "id": "urn:mu:universe:acme",
+    "displayName": "Acme Corporation",
+    "did": "did:web:acme.example"
+  },
+  "conformance": { "muc": "2.0: Conformant", "mmas": "A4", "mufp": "Level 2" },
+  "supportedVersions": { "muc": "^2.0.0", "mmas": ">=2.0.0", "mufp": "^1.0.0" },
+  "capabilities": ["projection-exchange", "synchronization", "identity-binding"],
+  "endpoints": { "mufp": "https://acme.example/mufp" },
+  "publicSchemas": [
+    {
+      "namespace": "employee",
+      "fingerprint": "sha256:0b4965f1fbdfa47c26d92048d06c1f013846150f4f5fd6c058fde103e4038c40",
+      "href": "https://acme.example/schemas/employee.muif.json"
+    }
+  ],
+  "federationProfiles": ["gov.taxFiling"],
+  "registries": ["https://registry.example/meta-universe"]
+}
