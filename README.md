@@ -1,3 +1,15 @@
+> [!IMPORTANT]
+> ## This standard has moved to Vercy
+>
+> The open standard for federated semantics is now published **vendor-neutrally** at
+> **https://github.com/ver-cy/meta-universe** (website: **https://ver.cy**). That is the
+> single canonical home of the standard.
+>
+> This repository is **archived** and kept for historical reference only. Orkestron
+> continues as a reference implementation and steward of the standard.
+
+---
+
 <p align="center">
   <!-- Replace with a real banner/logo when available -->
   <img src="https://img.shields.io/badge/%F0%9F%8C%8C-Meta--Universe-1a1a2e?style=for-the-badge" alt="Meta-Universe" height="40">
